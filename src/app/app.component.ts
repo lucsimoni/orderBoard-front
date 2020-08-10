@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { SessionStorageService } from './services/storage/session-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'OrderBoard';
 
-  constructor() {}
+  public title = 'OrderBoard';
 
+  constructor(
+    private translate: TranslateService,
+    private sessionStgService: SessionStorageService) 
+  {
+    this.translate.setDefaultLang('fr');
+    this.translate.use('fr');
+    this.sessionStgService.clearLanguage('fr');
+  }
 }
