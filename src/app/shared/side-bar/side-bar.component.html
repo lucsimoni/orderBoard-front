@@ -1,0 +1,8 @@
+<!-- Menu website -->
+<mat-nav-list class="pt-0">
+    <a mat-list-item *ngFor="let link of links" routerLink="{{link.path}}" routerLinkActive="active"
+        (click)="isMobile ? onSidenavClose() : null">
+        <mat-icon class="mr-3">{{ link.icon }}</mat-icon>
+        <span class="nav-caption">{{ link.title | uppercase }}</span>
+    </a>
+</mat-nav-list>

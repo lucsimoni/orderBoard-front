@@ -1,0 +1,14 @@
+<div class="d-md-none icon-menu">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</div>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation" [mode]="mobileQuery.matches ? 'over' : 'side'"
+        [opened]="screenWidth > mobileWidth">
+        <app-side-bar (sidenavClose)="sidenav.close()" [isMobile]="screenWidth < mobileWidth"></app-side-bar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

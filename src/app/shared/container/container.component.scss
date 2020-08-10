@@ -1,0 +1,16 @@
+@import '../../../variables';
+
+mat-sidenav {
+  width: 250px;
+}
+mat-sidenav-content {
+  padding-top: 1rem;
+}
+.icon-menu {
+  position: absolute;
+  top: 3px;
+  color: $color-primary;
+}
+mat-sidenav-container {
+  min-height: 87.4vh;
+}

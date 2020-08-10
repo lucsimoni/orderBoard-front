@@ -1,0 +1,8 @@
+@import '../../../variables';
+
+header {
+    border-bottom: 1px solid $color-light;
+    .blue-bar {
+        background: $color-primary;
+    }
+}

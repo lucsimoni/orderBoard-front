@@ -1,0 +1,31 @@
+@import '../../../variables';
+@import '../../../material';
+
+// Couleur bordure menu
+$menu-border-color: (
+  "1" : $color-menu-1,
+  "2" : $color-menu-2,
+  "3" : $color-menu-3,
+  "4" : $color-menu-4,
+  "5" : $color-menu-5,
+  "6" : $color-menu-6,
+);
+
+@each $color-name, $color-code in $menu-border-color {
+  .mat-nav-list .mat-list-item:nth-child(#{$color-name}) {
+    border-left: 8px solid $color-code;
+    &.active, &.focus, &.hover {
+      background-color: $color-code;
+      color: white;
+    }
+  }
+}
+
+.mat-list-item {
+  .nav-caption {
+    font-family: $font-regular;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+}
+

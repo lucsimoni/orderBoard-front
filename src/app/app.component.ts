@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +8,6 @@ import { UserService } from './services/user/user.service';
 export class AppComponent {
   title = 'OrderBoard';
 
-  constructor(private userService:UserService) {}
+  constructor() {}
 
-  testCallBack() {
-    console.log('LSI 0');
-    this.userService.getAll().subscribe(
-      (res) => {
-        console.log("LSI SUCCESS", res);
-      },
-      (error) => {
-        console.log("LSI ERREUR");
-        
-      }
-    );
-  }
 }
