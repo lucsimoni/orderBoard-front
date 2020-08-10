@@ -1,20 +1,21 @@
 @import 'variables';
-/* For use in src/lib/core/theming/_palette.scss */
+
+// Material Contrast Generator : http://mcg.mbitson.com/
 $md-overBoardtheme: (
-    50 : #e0f2ec,
-    100 : #97E63B,
-    200 : #86CC34,
-    300 : #65BF00,
-    400 : #41A03C,
-    500 : $color-primary,
-    600 : #008e56,
-    700 : $color-secondary,
-    800 : #1c8053,
-    900 : #09603E,
-    A100 : #97ffbf,
-    A200 : #64ffa0,
-    A400 : #31ff81,
-    A700 : #18ff71,
+    50: #e2f8f6,
+    100: #b7ede8,
+    200: #87e2d9,
+    300: #57d6c9,
+    400: #33cdbe,
+    500: #0fc4b2,
+    600: #0dbeab,
+    700: #0bb6a2,
+    800: #08af99,
+    900: #04a28a,
+    A100: #ccfff6,
+    A200: #99ffed,
+    A400: #66ffe4,
+    A700: #4dffe0,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -34,21 +35,53 @@ $md-overBoardtheme: (
 );
 
 /* For use in src/lib/core/theming/_palette.scss */
-$md-overBoardthemepink: (
-    50 : #f8e0ed,
-    100 : #edb3d2,
-    200 : #e180b4,
-    300 : #d44d96,
-    400 : #cb2680,
-    500 : #c20069,
-    600 : #bc0061,
-    700 : #b40056,
-    800 : #ac004c,
-    900 : #9f003b,
-    A100 : #ffc9d9,
-    A200 : #ff96b5,
-    A400 : #ff6391,
-    A700 : #ff4a7f,
+$md-overBoardthemeaccent: (
+    50 : #fff9e8,
+    100 : #fff0c6,
+    200 : #ffe6a1,
+    300 : #ffdb7b,
+    400 : #ffd45e,
+    500 : #ffcc42,
+    600 : #ffc73c,
+    700 : #ffc033,
+    800 : #ffb92b,
+    900 : #ffad1d,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffecce,
+    A700 : #ffe2b4,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000
+    )
+);
+$md-overBoardthemewarn: (
+    50 : #fae1e1,
+    100 : #f2b5b5,
+    200 : #e98484,
+    300 : #e05353,
+    400 : #d92e2e,
+    500 : #d20909,
+    600 : #cd0808,
+    700 : #c70606,
+    800 : #c10505,
+    900 : #b60202,
+    A100 : #ffdfdf,
+    A200 : #ffacac,
+    A400 : #ff7979,
+    A700 : #ff5f5f,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -64,38 +97,6 @@ $md-overBoardthemepink: (
         A200 : #000000,
         A400 : #000000,
         A700 : #000000,
-    )
-);
-$md-overBoardthemewarn: (
-    50 : #f6e5e5,
-    100 : #e7bebe,
-    200 : #d89393,
-    300 : #c86868,
-    400 : #bc4747,
-    500 : $color-secondary,
-    600 : #a92323,
-    700 : #a01d1d,
-    800 : #971717,
-    900 : #870e0e,
-    A100 : #ffb8b8,
-    A200 : #ff8585,
-    A400 : #ff5252,
-    A700 : #ff3838,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #ffffff,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #ffffff,
     )
 );
 
@@ -121,7 +122,7 @@ $custom-typography: mat-typography-config(
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $angular-primary: mat-palette($md-overBoardtheme);
-$angular-accent: mat-palette($md-overBoardthemepink, A200, A100, A400);
+$angular-accent: mat-palette($md-overBoardthemeaccent, A200, A100, A400);
 $angular-warn: mat-palette($md-overBoardthemewarn);
  
 
