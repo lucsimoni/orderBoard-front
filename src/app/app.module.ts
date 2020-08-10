@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
+
+import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ContainerComponent } from './shared/container/container.component';
 import { FooterBarComponent } from './shared/footer-bar/footer-bar.component';
@@ -32,7 +33,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.pulse,
+      backdropBackgroundColour: 'rgba(255,255,255,0.5)', 
+      backdropBorderRadius: '4px',
+      primaryColour: '#0fc4b2', 
+      secondaryColour: '#57d6c9', 
+      tertiaryColour: '#b7ede8'
+  })
   ],
   providers: [],
   bootstrap: [AppComponent]

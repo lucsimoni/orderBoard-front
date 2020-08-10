@@ -1,0 +1,17 @@
+{
+  "name": "i18n",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "i18n-excel2json": "./node_modules/.bin/gulp build",
+    "generate-i18n": "npm run i18n-excel2json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-i18n-excel2json": "^2.0.0"
+  }
+}
