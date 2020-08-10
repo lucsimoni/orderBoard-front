@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+/**** Fonts ****/
+@import 'fonts.scss';
+
+/**** Variables ****/
+@import 'variables.scss';
+
+/**** Bootstrap ****/
+@import "bootstrap.scss";
+
+/**** Material ****/
+@import 'material';
+
+// * {
+//     font-family: $font7;
+// }
+
+html, body { 
+    margin: 0;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+button:focus {
+    outline: none;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
