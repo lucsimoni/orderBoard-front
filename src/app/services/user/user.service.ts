@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api/api.service';
+import { MockInfos } from 'src/app/models/mock-infos/mock-infos.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-    private requestMapping: string = 'user/';
+    private requestMapping: string = 'user';
 
     constructor(
       private apiService: ApiService
@@ -18,7 +19,8 @@ export class UserService {
     }
 
     getAll():Observable<any> {
-      return this.apiService.sendRequestGetOrDelete(this.requestMapping + 'getAll', 'get', "text");
+      let mockInfos: MockInfos = { mockGroup: 'user', mockService: 'getAll' };
+      return this.apiService.sendRequestGetOrDelete(this.requestMapping + '/getAll', 'get', "text", mockInfos );
     }
   
 

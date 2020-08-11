@@ -4,6 +4,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { MockInfos } from '../../models/mock-infos/mock-infos.model';
 // import { SessionStgService } from '../session-storage/session-stg.service';
 // import { AuthService } from './auth.service';
 // import { SessionService } from '../session.service';
@@ -42,9 +43,9 @@ export class ApiService {
      *  wsName : is the service name and urls parameters if necessary
      *  body : is a  body content
      */
-    sendRequestPostOrUpdate(wsName: string, reqType: string, body: object) {
+    sendRequestPostOrUpdate(wsName: string, reqType: string, body: object, mockInfos: MockInfos) {
         if (environment.mock) {
-            return this.callMockedData(wsName);
+            return this.callMockedData(mockInfos);
         } else {
             // if (wsName != 'rdf/login')
             //     this.sessionService.resetTimer();
@@ -62,9 +63,9 @@ export class ApiService {
      * reqType : is a methode name for example get and delete
      * responseType: is XMLHttpRequestResponseType  example 'text'
      * */
-    sendRequestGetOrDelete(wsName: string, reqType: string, responseType: string) {
+    sendRequestGetOrDelete(wsName: string, reqType: string, responseType: string, mockInfos: MockInfos) {
         if (environment.mock) {
-            return this.callMockedData(wsName);
+            return this.callMockedData(mockInfos);
         } else {
             // this.sessionService.resetTimer();
         }
@@ -79,18 +80,11 @@ export class ApiService {
      *  used for mocking all Wss if mock is true
      *  wsName : is the service name which is the name of the jsonFile
      */
-    callMockedData(wsName: string) {
-        return this.httpClient.get('./assets/mocks/' + this.extractWsName(wsName) + '.json').pipe(
+    callMockedData(mockInfos: any) {
+        return this.httpClient.get('./assets/mocks/' + mockInfos.mockGroup + '/' + mockInfos.mockService + '.json').pipe(
             map(res => res)
         );
     }
-
-    extractWsName(wsName) {
-        let wsN = wsName.split('/');
-        wsN = wsN[wsN.length - 1].split('?');
-        return wsN[0];
-    }
-
 
     handleError(error: HttpErrorResponse) {
         return throwError(error);
