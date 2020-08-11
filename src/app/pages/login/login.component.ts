@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -7,22 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  testmock() {
+    environment.mock = true;
+    this.testCallBack();
   }
 
-  // testCallBack() {
-  //   console.log('LSI 0');
-  //   this.userService.getAll().subscribe(
-  //     (res) => {
-  //       console.log("LSI SUCCESS", res);
-  //     },
-  //     (error) => {
-  //       console.log("LSI ERREUR");
+  testnonmock() {
+    environment.mock = false;
+    this.testCallBack();
+  }
+
+  testCallBack() {
+    console.log('LSI 0');
+    this.userService.getAll().subscribe(
+      (res) => {
+        console.log("LSI SUCCESS", res);
+      },
+      (error) => {
+        console.log("LSI ERREUR");
         
-  //     }
-  //   );
-  // }
+      }
+    );
+  }
 
 }

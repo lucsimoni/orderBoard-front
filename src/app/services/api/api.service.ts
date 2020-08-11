@@ -20,8 +20,9 @@ import { environment } from '../../../environments/environment';
     providedIn: 'root'
 })
 export class ApiService {
-    //Variables
+
     domainUrl: string = environment.domainUrl;
+    mock: boolean = environment.mock;
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -92,7 +93,6 @@ export class ApiService {
 
 
     handleError(error: HttpErrorResponse) {
-        // return an observable with a user-facing error message
         return throwError(error);
     }
 
