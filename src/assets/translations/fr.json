@@ -7,7 +7,14 @@
         "EN": "English"
     },
     "LOGIN": {
-        "DASHBOARD": "Accés au tableau de bord"
+        "DASHBOARD": "Accés au tableau de bord",
+        "FORM": {
+            "LOGIN": "Identifiant",
+            "UNVALID_ID": "Identifiant non valide",
+            "INPUT_EMPTY": "Champs requis",
+            "PASSWORD": "Mot de passe",
+            "CONNECT": "Connexion"
+        }
     },
     "HEADER": {
         "ACCOUNT": "Mon compte",

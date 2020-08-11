@@ -7,7 +7,14 @@
         "EN": "English"
     },
     "LOGIN": {
-        "DASHBOARD": "Access to dashboard"
+        "DASHBOARD": "Access to dashboard",
+        "FORM": {
+            "LOGIN": "Login",
+            "UNVALID_ID": "Login unvalid",
+            "INPUT_EMPTY": "Field required",
+            "PASSWORD": "Password",
+            "CONNECT": "Login"
+        }
     },
     "HEADER": {
         "ACCOUNT": "My account",

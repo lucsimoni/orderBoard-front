@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { environment } from '../../../environments/environment';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,34 @@ import { environment } from '../../../environments/environment';
 })
 export class LoginComponent implements OnInit {
 
+  public loginForm: FormGroup;
+  public showPassword: boolean = false;
+  public isLoading: boolean = false;
+  // post:any;
+
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      login: [null, [Validators.required]],
+      password: [null, Validators.required]
+    });
+  }
+
+  get l() {
+    return this.loginForm.controls;
+  }
+
+  resetLogin() {
+    this.loginForm.controls.login.setValue('');
+  }
+
+  resetPassword() {
+    this.loginForm.controls.password.setValue('');
+  }
 
   testmock() {
     environment.mock = true;
@@ -33,9 +57,14 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log("LSI ERREUR");
-        
+
       }
     );
+  }
+
+  onSubmit(post) {
+    console.log("lsi",post);
+    // this.post = post;
   }
 
 }

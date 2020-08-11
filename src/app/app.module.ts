@@ -20,6 +20,7 @@ import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@ang
 import { AppConfig } from './app.config';
 import { SessionStorageService } from './services/storage/session-storage.service';
 import localeFr from '@angular/common/locales/fr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -53,6 +54,7 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.pulse,
       backdropBackgroundColour: 'rgba(255,255,255,0.5)', 

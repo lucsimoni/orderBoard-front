@@ -2,15 +2,66 @@
 <button (click)="testnonmock()">Test non mock</button> -->
 
 <main class="container pt-3 text-center">
+    <!-- <div *ngIf="!post; else forminfo" novalidate> -->
     <div class="row justify-content-md-center">
         <div class="col-md-6 col-12">
             <div class="card">
-                <h1 class="card-title">{{ 'LOGIN.DASHBOARD' | translate }}</h1>
-                Contenu
-                <div class="card-footer">lol</div>
+                <div class="card-body">
+                    <h1 class="card-title">{{ 'LOGIN.DASHBOARD' | translate }}</h1>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+                        <!-- Login -->
+                        <mat-form-field class="form-element mt-3 w-100">
+                            <button mat-button matSuffix mat-icon-button role="button" type="button"
+                                (click)="resetLogin()" *ngIf="l.login.value">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <input matInput placeholder="{{ 'LOGIN.FORM.LOGIN' | translate }}" formControlName="login"
+                                pattern="[a-z]*">
+                            <mat-icon matPrefix class="mr-2">person</mat-icon>
+                            <mat-error *ngIf="l.login.invalid &&  (l.login.touched || l.login.dirty)">
+                                <span *ngIf="l.login.value">{{ 'LOGIN.FORM.UNVALID_ID' | translate }}</span>
+                                <span *ngIf="!l.login.value">{{ 'LOGIN.FORM.INPUT_EMPTY' | translate }}</span>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <!-- Password -->
+                        <mat-form-field class="form-element mt-3 w-100">
+                            <button mat-button matSuffix mat-icon-button role="button" type="button"
+                                (click)="resetPassword()" *ngIf="l.password.value">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <button mat-button matSuffix mat-icon-button role="button" type="button"
+                                (click)="showPassword = !showPassword" *ngIf="l.password.value">
+                                <mat-icon *ngIf="showPassword">visibility</mat-icon>
+                                <mat-icon *ngIf="!showPassword">visibility_off</mat-icon>
+                            </button>
+                            <input matInput placeholder="{{ 'LOGIN.FORM.PASSWORD' | translate }}"
+                                formControlName="password" type='{{showPassword ? "text" : "password"}}'>
+                            <mat-icon matPrefix class="mr-2">lock</mat-icon>
+                            <mat-error *ngIf="!l.password.valid && l.password.touched">
+                                {{ 'LOGIN.FORM.INPUT_EMPTY' | translate }}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <!-- Submit -->
+                        <button type="button" mat-raised-button color="primary" type='submit' class="btn btn-primary mt-2"
+                            [disabled]="!loginForm.valid">{{'LOGIN.FORM.CONNECT'| translate | uppercase}}</button>
+
+
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-link">
+                        <small>{{ 'LOGIN.MOT_DE_PASSE_OUBLIE' | translate }} ?</small>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
+    <!-- </div> -->
+    <!-- <ng-template #forminfo>TEST</ng-template> -->
 </main>
 
-<ngx-loading [show]="false"></ngx-loading>
+<ngx-loading [show]="isLoading"></ngx-loading>
