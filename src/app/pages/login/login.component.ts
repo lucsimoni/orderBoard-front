@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { environment } from '../../../environments/environment';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      login: [null, [Validators.required]],
-      password: [null, Validators.required]
+      login: [null, [Validators.required/*, this.loginValidator.bind(this)*/]],
+    password: [null, Validators.required/*, Validators.pattern(regex)*/]
     });
   }
 
@@ -66,5 +66,21 @@ export class LoginComponent implements OnInit {
     console.log("lsi",post);
     // this.post = post;
   }
+
+  // loginValidator(control: FormControl) {
+  //   // ok
+  //   if(control.value === 'test') {
+  //     return;
+  //     // pas ok
+  //   } else {
+  //     return { errorLogin: true }
+  //   }
+  // }
+
+  // errorFromCustomValidator(login) {
+  //   if(login.errors.errorLogin)
+  //     return true;
+  //   return false;
+  // }
 
 }

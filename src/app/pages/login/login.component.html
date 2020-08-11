@@ -23,6 +23,7 @@
                             <mat-error *ngIf="l.login.invalid &&  (l.login.touched || l.login.dirty)">
                                 <span *ngIf="l.login.value">{{ 'LOGIN.FORM.UNVALID_ID' | translate }}</span>
                                 <span *ngIf="!l.login.value">{{ 'LOGIN.FORM.INPUT_EMPTY' | translate }}</span>
+                                <!-- <span *ngIf="errorFromCustomValidator(l.login)">Error from Custom Validator</span> -->
                             </mat-error>
                         </mat-form-field>
 
