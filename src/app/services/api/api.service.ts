@@ -5,7 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { MockInfos } from '../../models/mock-infos/mock-infos.model';
-// import { SessionStgService } from '../session-storage/session-stg.service';
+import { SessionStorageService } from '../storage/session-storage.service';
 // import { AuthService } from './auth.service';
 // import { SessionService } from '../session.service';
 
@@ -33,7 +33,7 @@ export class ApiService {
 
     constructor(
         private httpClient: HttpClient,
-        // private sessionStgService: SessionStgService,
+        private sessionStorageService: SessionStorageService,
         // private authService: AuthService,
         // private sessionService: SessionService
     ) {}
@@ -47,8 +47,8 @@ export class ApiService {
         if (environment.mock) {
             return this.callMockedData(mockInfos);
         } else {
-            // if (wsName != 'rdf/login')
-            //     this.sessionService.resetTimer();
+            // if (wsName != 'user/login')
+            //     this.sessionStorageService.resetTimer();
         }
         return this.httpClient[reqType](this.domainUrl + wsName, body/*, { headers: this.getHeaders(wsName) }*/)
             .pipe(
@@ -91,7 +91,7 @@ export class ApiService {
     }
 
     // setToken(data: any) {
-    //     this.sessionStgService.setToken('Bearer ' + data.SessionID_base64);
+    //     this.sessionStgService.setToken(data.SessionID_base64);
     // }
 
     // getHeaders(wsName) {
