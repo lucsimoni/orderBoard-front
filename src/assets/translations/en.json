@@ -1,3 +1,17 @@
 {
-    "TEST": "that a test"
+    "TITLE": {
+        "NAME": "OrderBoard"
+    },
+    "LANG": {
+        "FR": "Français",
+        "EN": "English"
+    },
+    "LOGIN": {
+        "DASHBOARD": "Access to dashboard"
+    },
+    "HEADER": {
+        "ACCOUNT": "My account",
+        "LOGOUT": "Logout",
+        "LANG": "Language"
+    }
 }

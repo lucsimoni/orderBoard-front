@@ -1,3 +1,17 @@
 {
-    "TEST": "ceci est un test"
+    "TITLE": {
+        "NAME": "OrderBoard"
+    },
+    "LANG": {
+        "FR": "Français",
+        "EN": "English"
+    },
+    "LOGIN": {
+        "DASHBOARD": "Accés au tableau de bord"
+    },
+    "HEADER": {
+        "ACCOUNT": "Mon compte",
+        "LOGOUT": "Déconnexion",
+        "LANG": "Langue"
+    }
 }

@@ -5,4 +5,17 @@ header {
     .blue-bar {
         background: $color-primary;
     }
+    .brand-bar {
+        .main-title {
+            font-family: $font-main-title;
+            color: $color-primary;
+            font-size: 1.8rem;
+            line-height: 2.4rem;
+        }
+        button {
+            &:hover {
+              color: $color-primary;
+            }
+        }
+    }
 }

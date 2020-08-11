@@ -1,17 +1,31 @@
 <header>
-    <section class="blue-bar text-right">
-        LANG
+    <section class="blue-bar text-right py-1">
+        <button mat-button [matMenuTriggerFor]="menu" class="py-1 mr-1" matTooltip="{{ 'HEADER.LANG' | translate }}">
+            <img src="../../../assets/images/flags/{{language}}.png" alt="fr">
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="changeLanguage('fr')">
+              {{ 'LANG.FR' | translate }}
+          </button>
+          <button mat-menu-item (click)="changeLanguage('en')">
+              {{ 'LANG.EN' | translate }}
+          </button>
+        </mat-menu>
     </section>
-    <section class="container-fluid p-3">
+    <section class="brand-bar container-fluid p-3">
         <div class="row">
-            <div class="col-6">
-                OrderBoard
+            <div class="col-6 main-title">
+                {{ 'TITLE.NAME' | translate }}
             </div>
-            <div class="col-6">
-                {{ 'TEST' | translate }}
+            <div class="controls col-6 text-right">
+                <button mat-button class="d-none d-md-inline-block" matTooltip="{{ 'HEADER.ACCOUNT' | translate }}">
+                    <mat-icon>person</mat-icon>
+                    <strong class="ml-2">J. DOE</strong>
+                </button>
+                <button mat-button matTooltip="{{ 'HEADER.LOGOUT' | translate }}">
+                    <mat-icon>power_settings_new</mat-icon>
+                </button>
             </div>
-            <button (click)="changeLanguage('fr')">FR</button>
-            <button (click)="changeLanguage('en')">EN</button>
         </div>
     </section>
 </header>
