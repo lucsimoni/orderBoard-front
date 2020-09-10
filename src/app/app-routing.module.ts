@@ -4,6 +4,8 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ContainerComponent } from './shared/container/container.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +19,8 @@ const routes: Routes = [
       // canActivate: [AuthenticationGuard],
       component: ContainerComponent, children: [
         {pathMatch: 'full', path: '', redirectTo: 'dashboard'},
+        { path: 'dashboard', component: DashboardComponent },
+        { path: 'product', component: ProductsComponent },
         { path: 'not-found', component: NotFoundComponent },
       ]
     }]

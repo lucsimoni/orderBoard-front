@@ -11,3 +11,10 @@ export class AppConfig {
         AppConfig.configs = configs;
     }
 }
+
+/**
+Sinon
+export const CONFIGS = { le json }
+Puis dans le ts
+private email = ...CONFIGS.EMAIL;
+*/

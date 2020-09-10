@@ -9,6 +9,8 @@
         <app-side-bar (sidenavClose)="sidenav.close()" [isMobile]="screenWidth < mobileWidth"></app-side-bar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <router-outlet></router-outlet>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

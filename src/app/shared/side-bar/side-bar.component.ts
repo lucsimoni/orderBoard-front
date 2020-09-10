@@ -13,11 +13,13 @@ export class SideBarComponent implements OnInit {
   constructor() { }
 
   links = [
-    { 'icon': 'folder', 'title': 'lien1', 'path': '/not-found' },
-    { 'icon': 'folder', 'title': 'lien2', 'path': '/not-found' },
-    { 'icon': 'folder', 'title': 'lien3', 'path': '/not-found' },
-    { 'icon': 'folder', 'title': 'lien4', 'path': '/not-found' },
-    { 'icon': 'folder', 'title': 'lien5', 'path': '/not-found' },
+    { 'icon': 'folder', 'title': 'MENU.DASHBOARD', 'path': '/dashboard' },
+    { 'icon': 'folder', 'title': 'MENU.ORDERS', 'path': '/order' },
+    { 'icon': 'folder', 'title': 'MENU.PRODUCTS', 'path': '/product' },
+    { 'icon': 'folder', 'title': 'MENU.CLIENTS', 'path': '/client' },
+    { 'icon': 'folder', 'title': 'MENU.SHOP', 'path': '/shop' },
+    { 'icon': 'folder', 'title': 'MENU.USER', 'path': '/user' },
+    { 'icon': 'folder', 'title': 'Not Found', 'path': '/not-found' },
     { 'icon': 'folder', 'title': 'login', 'path': '/login' }
   ];
 
