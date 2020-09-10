@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   public products: Product[] = [];
   public searchResults: Product[];
   public isLoading: boolean = true;
+  public newProductOpened: boolean = false;
 
   constructor(
     private productService: ProductService,

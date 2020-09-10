@@ -22,6 +22,7 @@ import { SessionStorageService } from './services/storage/session-storage.servic
 import localeFr from '@angular/common/locales/fr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from './pages/products/products.component';
+import { AddProductComponent } from './pages/products/add-product/add-product.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -48,7 +49,8 @@ registerLocaleData(localeFr, 'fr');
     LayoutComponent,
     NotFoundComponent,
     DashboardComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
