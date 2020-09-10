@@ -1,16 +1,16 @@
 <main>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h1>{{ 'PRODUCTS.TITLE' | translate }}</h1>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <mat-form-field>
                 <mat-label>{{ 'PRODUCTS.SEARCH_LABEL' | translate }}</mat-label>
                 <input matInput type="text" placeholder="{{ 'PRODUCTS.SEARCH_PLACEHOLDER' | translate }}" (keyup)="search($event)">
                 <mat-icon matPrefix>search</mat-icon>
             </mat-form-field>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
 
         </div>
     </div>
@@ -35,3 +35,5 @@
         </mat-expansion-panel>
     </mat-accordion>
 </main>
+
+<ngx-loading [show]="isLoading"></ngx-loading>

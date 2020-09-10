@@ -81,7 +81,7 @@ export class ApiService {
      *  wsName : is the service name which is the name of the jsonFile
      */
     callMockedData(mockInfos: any) {
-        return this.httpClient.get('./assets/mocks/' + mockInfos.mockGroup + '/' + mockInfos.mockService + '.json').pipe(
+        return this.httpClient.get('./assets/mocks/' + mockInfos.mockFolder + '/' + mockInfos.mockService + '.json').pipe(
             map(res => res)
         );
     }

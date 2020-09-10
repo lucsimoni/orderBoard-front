@@ -19,7 +19,7 @@ export class UserService {
     }
 
     getAll():Observable<any> {
-      let mockInfos: MockInfos = { mockGroup: 'user', mockService: 'getAll' };
+      let mockInfos: MockInfos = { mockFolder: 'user', mockService: 'getAll' };
       return this.apiService.sendRequestGetOrDelete(this.requestMapping + '/getAll', 'get', "text", mockInfos );
     }
   

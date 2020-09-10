@@ -1,4 +1,4 @@
 export interface MockInfos {
-    mockGroup: string,
+    mockFolder: string,
     mockService: string
 }
