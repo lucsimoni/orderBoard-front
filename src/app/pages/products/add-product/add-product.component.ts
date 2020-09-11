@@ -27,4 +27,8 @@ export class AddProductComponent implements OnInit {
     return this.productForm.controls;
   }
 
+  onSubmit(post) {
+
+  }
+
 }

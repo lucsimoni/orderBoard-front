@@ -1,1 +1,48 @@
-<p>add-product works!</p>
+<!-- <section *ngIf="!post; else forminfo" novalidate> -->
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
+
+    <!-- Name -->
+    <mat-form-field class="form-element mt-3 w-100">
+        <button mat-button matSuffix mat-icon-button role="button" type="button" *ngIf="form.name.value">
+            <mat-icon>close</mat-icon>
+        </button>
+        <input matInput placeholder="{{ 'PRODUCT.FORM.NAME' | translate }}" formControlName="name" pattern="[a-z]*">
+        <mat-icon matPrefix class="mr-2">person</mat-icon>
+        <mat-error *ngIf="form.name.invalid &&  (form.name.touched || form.name.dirty)">
+            <span *ngIf="!form.name.value">{{ 'PRODUCT.FORM.INPUT_EMPTY' | translate }}</span>
+        </mat-error>
+    </mat-form-field>
+
+    <!-- Price -->
+    <mat-form-field class="form-element mt-3 w-100">
+        <button mat-button matSuffix mat-icon-button role="button" type="button" *ngIf="form.name.value">
+            <mat-icon>close</mat-icon>
+        </button>
+        <input matInput placeholder="{{ 'PRODUCT.FORM.PRICE' | translate }}" formControlName="price" type="number">
+        <mat-icon matPrefix class="mr-2">person</mat-icon>
+        <mat-error *ngIf="form.price.invalid &&  (form.price.touched || form.price.dirty)">
+            <span *ngIf="!form.price.value">{{ 'PRODUCT.FORM.INPUT_EMPTY' | translate }}</span>
+        </mat-error>
+    </mat-form-field>
+
+    <!-- Quantity -->
+    <mat-form-field class="form-element mt-3 w-100">
+        <button mat-button matSuffix mat-icon-button role="button" type="button" *ngIf="form.quantity.value">
+            <mat-icon>close</mat-icon>
+        </button>
+        <input matInput placeholder="{{ 'PRODUCT.FORM.QUANTITY' | translate }}" formControlName="quantity" type="number">
+        <mat-icon matPrefix class="mr-2">person</mat-icon>
+        <mat-error *ngIf="form.quantity.invalid &&  (form.quantity.touched || form.quantity.dirty)">
+            <span *ngIf="!form.quantity.value">{{ 'PRODUCT.FORM.INPUT_EMPTY' | translate }}</span>
+        </mat-error>
+    </mat-form-field>
+
+    <!-- Submit -->
+    <button type="button" mat-raised-button color="primary" type='submit' class="btn btn-primary mt-2"
+        [disabled]="!productForm.valid">{{'LOGIN.FORM.CONNECT'| translate | uppercase}}</button>
+
+</form>
+
+<!-- </section> -->
+<!-- <ng-template #forminfo>TEST</ng-template> -->
