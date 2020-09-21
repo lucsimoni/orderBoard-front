@@ -23,6 +23,7 @@ import localeFr from '@angular/common/locales/fr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from './pages/products/products.component';
 import { AddProductComponent } from './pages/products/add-product/add-product.component';
+import { UsersComponent } from './pages/users/users.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -50,7 +51,8 @@ registerLocaleData(localeFr, 'fr');
     NotFoundComponent,
     DashboardComponent,
     ProductsComponent,
-    AddProductComponent
+    AddProductComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

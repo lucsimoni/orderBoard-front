@@ -15,10 +15,10 @@ export class SideBarComponent implements OnInit {
   links = [
     { 'icon': 'folder', 'title': 'MENU.DASHBOARD', 'path': '/dashboard' },
     { 'icon': 'folder', 'title': 'MENU.ORDERS', 'path': '/order' },
-    { 'icon': 'folder', 'title': 'MENU.PRODUCTS', 'path': '/product' },
+    { 'icon': 'folder', 'title': 'MENU.PRODUCTS', 'path': '/products' },
     { 'icon': 'folder', 'title': 'MENU.CLIENTS', 'path': '/client' },
     { 'icon': 'folder', 'title': 'MENU.SHOP', 'path': '/shop' },
-    { 'icon': 'folder', 'title': 'MENU.USER', 'path': '/user' },
+    { 'icon': 'folder', 'title': 'MENU.USER', 'path': '/users' },
     { 'icon': 'folder', 'title': 'Not Found', 'path': '/not-found' },
     { 'icon': 'folder', 'title': 'login', 'path': '/login' }
   ];

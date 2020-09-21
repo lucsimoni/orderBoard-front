@@ -12,6 +12,9 @@ export class ErrorService {
 
   manageError(codeError: string) {
     switch (codeError) {
+      case '02:01':
+        this.presentAlert('ERROR_02_01');
+        break;
       case '03:01':
         this.presentAlert('ERROR_03_01');
         break;
