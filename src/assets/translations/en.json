@@ -20,5 +20,11 @@
         "ACCOUNT": "My account",
         "LOGOUT": "Logout",
         "LANG": "Language"
+    },
+    "MENU": {
+        "USERS": "Sellers"
+    },
+    "USERS": {
+        "TITLE": "Sellers"
     }
 }

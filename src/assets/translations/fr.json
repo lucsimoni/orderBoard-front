@@ -20,5 +20,11 @@
         "ACCOUNT": "Mon compte",
         "LOGOUT": "Déconnexion",
         "LANG": "Langue"
+    },
+    "MENU": {
+        "USERS": "Vendeurs"
+    },
+    "USERS": {
+        "TITLE": "Liste des vendeurs"
     }
 }
