@@ -86,4 +86,15 @@ export class LoginComponent implements OnInit {
   //   return false;
   // }
 
+  //Prerempli le login pour la prochaine connexion
+  // constuctor : private storage: Storage
+  // fillWithPreviousLogin() {
+  //   this.storage.get('loginStorage').then(
+  //     (res) => {
+  //       if(res !== null && res !== undefined) {
+  //         this.loginForm.patchValue({ login: res });
+  //       } 
+  //     })
+  // }
+
 }
