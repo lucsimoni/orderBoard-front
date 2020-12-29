@@ -88,6 +88,11 @@ export class LoginComponent implements OnInit {
 
   //Prerempli le login pour la prochaine connexion
   // constuctor : private storage: Storage
+
+  //Dans le subscribe de la methode de login
+  // this.storage.set('loginStorage', this.loginForm.controls.login.value);
+
+  // Méthode appelée dans le ngoninit apres this.loginForm = this.formBuilder.group({
   // fillWithPreviousLogin() {
   //   this.storage.get('loginStorage').then(
   //     (res) => {

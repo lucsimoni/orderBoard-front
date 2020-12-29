@@ -1,5 +1,18 @@
 # Board
 
+Lien notification :
+Possibilité notification inApp
+
+https://www.freecodecamp.org/news/how-to-get-push-notifications-working-with-ionic-4-and-firebase-ad87cc92394e/
+
+https://golb.hplar.ch/2017/02/Send-messages-from-Spring-Boot-to-Ionic-2-over-FCM.html
+
+https://blog.mestwin.net/send-push-notifications-from-spring-boot-server-side-application-using-fcm/
+
+https://medium.com/@singh.pankajmca/fcm-integration-with-spring-boot-to-send-push-notification-from-server-side-1091cfd2cacf
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
 ## Development server
