@@ -1,0 +1,24 @@
+@import '../../../variables';
+
+a {
+    position: fixed;
+    z-index: 2;
+    bottom: 30px;
+    left: 30px;
+    background-color: $color-primary;
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    height: 5rem;
+    width: 5rem;
+    mat-icon {
+        font-size: 3rem;
+    }
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 5px 6px 3px rgba($color: #000000, $alpha: 0.2);
+        background-color: $color-accent;
+    }
+}
