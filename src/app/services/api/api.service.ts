@@ -5,7 +5,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { MockInfos } from '../../models/mock-infos/mock-infos.model';
-import { SessionStorageService } from '../storage/session-storage.service';
+import { AuthenticationService } from '../authentication/authentication.service';
+
 // import { AuthService } from './auth.service';
 // import { SessionService } from '../session.service';
 
@@ -33,9 +34,7 @@ export class ApiService {
 
     constructor(
         private httpClient: HttpClient,
-        private sessionStorageService: SessionStorageService,
-        // private authService: AuthService,
-        // private sessionService: SessionService
+        private authenticationService:AuthenticationService
     ) {}
 
     /**
@@ -47,8 +46,7 @@ export class ApiService {
         if (environment.mock) {
             return this.callMockedData(mockInfos);
         } else {
-            // if (wsName != 'user/login')
-            //     this.sessionStorageService.resetTimer();
+            this.authenticationService.resetTimer();
         }
         return this.httpClient[reqType](this.domainUrl + wsName, body/*, { headers: this.getHeaders(wsName) }*/)
             .pipe(
@@ -67,7 +65,7 @@ export class ApiService {
         if (environment.mock) {
             return this.callMockedData(mockInfos);
         } else {
-            // this.sessionService.resetTimer();
+            this.authenticationService.resetTimer();
         }
         return this.httpClient[reqType](this.domainUrl + wsName/*, { headers: this.getHeaders(wsName) }*/)
             .pipe(
