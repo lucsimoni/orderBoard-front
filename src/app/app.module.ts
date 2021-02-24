@@ -26,6 +26,7 @@ import { AddProductComponent } from './pages/products/add-product/add-product.co
 import { UsersComponent } from './pages/users/users.component';
 import { ExpiredSessionAlertComponent } from './services/authentication/expired-session-alert/expired-session-alert.component';
 import { ContactBoxComponent } from './shared/contact-box/contact-box.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -56,7 +57,8 @@ registerLocaleData(localeFr, 'fr');
     AddProductComponent,
     UsersComponent,
     ExpiredSessionAlertComponent,
-    ContactBoxComponent
+    ContactBoxComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

@@ -30,5 +30,8 @@
     "LOGOUT": {
         "EXPIRED_SESSION": "Session expired",
         "EXPIRED_SESSION_BTN": "Continue"
+    },
+    "CONTACT_BOX": {
+        "CONTACT_US": "Contact / Help"
     }
 }

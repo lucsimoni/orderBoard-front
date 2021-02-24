@@ -9,7 +9,9 @@ mat-sidenav-content {
 .icon-menu {
   position: absolute;
   top: 3px;
-  color: $color-primary;
+  button {
+    color: #ffffff;
+  }
 }
 mat-sidenav-container {
   min-height: 87.4vh;
