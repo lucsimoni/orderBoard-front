@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ExpiredSessionAlertComponent } from './expired-session-alert/expired-session-alert.component';
 
 // Durée de session en secondes - 3min 180s
-const MAX_SESSION_TIMER = 10;
+const MAX_SESSION_TIMER = 180;
 
 @Injectable({
   providedIn: 'root'
@@ -61,9 +61,7 @@ export class AuthenticationService {
   }
 
   tickerFunc(tick) {
-    this.timer = tick;  
-    console.log("lsi", this.timer);
-    
+    this.timer = tick;      
     if (this.timer === MAX_SESSION_TIMER) {
       this.timerSub.unsubscribe();
       this.openExpiredSessionPopUp();
@@ -72,7 +70,7 @@ export class AuthenticationService {
 
   //Ouverture d'une popup indiquant que la session est expirée
   openExpiredSessionPopUp() {
-    const dialogRef = this.dialog.open(ExpiredSessionAlertComponent);
+    const dialogRef = this.dialog.open(ExpiredSessionAlertComponent, {disableClose: true});
     dialogRef.afterClosed().subscribe(() => {
       this.logout();
     });

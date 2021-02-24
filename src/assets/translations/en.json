@@ -26,5 +26,9 @@
     },
     "USERS": {
         "TITLE": "Sellers"
+    },
+    "LOGOUT": {
+        "EXPIRED_SESSION": "Session expired",
+        "EXPIRED_SESSION_BTN": "Continue"
     }
 }

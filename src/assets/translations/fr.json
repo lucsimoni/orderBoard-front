@@ -26,5 +26,9 @@
     },
     "USERS": {
         "TITLE": "Liste des vendeurs"
+    },
+    "LOGOUT": {
+        "EXPIRED_SESSION": "Session expirée",
+        "EXPIRED_SESSION_BTN": "Continuer"
     }
 }
