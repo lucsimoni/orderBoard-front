@@ -7,17 +7,16 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { UsersComponent } from './pages/users/users.component';
+import { AuthenticationGuard } from './core/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
-    path: '', component: LayoutComponent, children: [{
-      path: 'login',
-      component: LoginComponent,
-    },
+    path: '', component: LayoutComponent, children: [
+      { path: 'login', component: LoginComponent },
     {
       path: '',
-      // canActivate: [AuthenticationGuard],
+      canActivate: [AuthenticationGuard],
       component: ContainerComponent, children: [
         {pathMatch: 'full', path: '', redirectTo: 'dashboard'},
         { path: 'dashboard', component: DashboardComponent },
