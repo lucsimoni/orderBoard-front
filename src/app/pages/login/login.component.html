@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h1 class="card-title">{{ 'LOGIN.DASHBOARD' | translate }}</h1>
 
-                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
 
                         <!-- Login -->
                         <mat-form-field class="form-element mt-3 w-100">

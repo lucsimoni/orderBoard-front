@@ -13,10 +13,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 // Import comme cela
 // import * as _ from 'lodash';
 
-// Version mock dans le .ts du login
-// if (this.loginForm.controls.login.value.toUpperCase() == 'MOCK') {
-//     environment.mock = true;
-// }
+
 
 @Injectable({
     providedIn: 'root'

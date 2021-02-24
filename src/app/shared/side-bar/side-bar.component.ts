@@ -19,8 +19,7 @@ export class SideBarComponent implements OnInit {
     { 'icon': 'folder', 'title': 'MENU.CLIENTS', 'path': '/client' },
     { 'icon': 'folder', 'title': 'MENU.SHOP', 'path': '/shop' },
     { 'icon': 'person_pin', 'title': 'MENU.USERS', 'path': '/users' },
-    { 'icon': 'folder', 'title': 'Not Found', 'path': '/not-found' },
-    { 'icon': 'folder', 'title': 'login', 'path': '/login' }
+    { 'icon': 'folder', 'title': 'Not Found', 'path': '/not-found' }
   ];
 
   ngOnInit() {

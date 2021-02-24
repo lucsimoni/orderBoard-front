@@ -66,8 +66,12 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  onSubmit(post) {
+  login(post) {
     console.log("lsi",post);
+    // Version Démo si le login est "MOCK"
+    if (this.loginForm.controls.login.value.toUpperCase() == 'MOCK') {
+      environment.mock = true;
+    }
     this.authenticationService.login();
     this.router.navigate(['/dashboard']);
     // this.post = post;
