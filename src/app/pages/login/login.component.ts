@@ -3,6 +3,7 @@ import { UserService } from '../../services/user/user.service';
 import { environment } from '../../../environments/environment';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +68,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(post) {
     console.log("lsi",post);
+    this.authenticationService.login();
     this.router.navigate(['/dashboard']);
     // this.post = post;
   }

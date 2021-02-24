@@ -8,28 +8,28 @@ import { SessionStorageService } from '../storage/session-storage.service';
 })
 export class AuthenticationService {
 
-  public loggedIn = new BehaviorSubject<boolean>(false);
+  private authSubject = new BehaviorSubject<boolean>(false);
+  private isLoggedIn = this.authSubject.asObservable();
 
   constructor(
     private router: Router,
     private sessionStorageService: SessionStorageService
   ) { }
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
+  public isAuthenticated() {
+    let authVal = false;
+    this.isLoggedIn.subscribe((res) => { authVal = res});
+    return authVal;    
   }
 
-  // public isAuthenticated(): boolean {
-  //   return (this.sessionStorageService.getToken() != null) || false;
-  // }
-
-  logoutExpiredSession() { 
-    this.logout();
+  login() {
+    this.authSubject.next(true);
   }
  
   logout() {
     this.sessionStorageService.clear();
-    this.loggedIn.next(false); 
-    this.router.navigate(['/login']);
+    this.authSubject.next(false); 
+    this.router.navigate(['/']);
   }
+  
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionStorageService } from 'src/app/services/storage/session-storage.service';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import * as moment from 'moment';
 
 @Component({
@@ -15,6 +16,7 @@ export class TopBarComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private sessionStorageService: SessionStorageService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,14 @@ export class TopBarComponent implements OnInit {
     this.sessionStorageService.setLanguage(langue);    
     this.language = langue;
     moment.locale(langue);
+  }
+
+  isLoggedIn() {
+    return this.authenticationService.isAuthenticated();
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }
