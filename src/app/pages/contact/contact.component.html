@@ -1,1 +1,101 @@
-<p>contact works!</p>
+<main class="container-fluid mb-3">
+    <h1 class="text-muted">
+        <mat-icon class="mr-3">forum</mat-icon>
+        {{ 'Contact / Aide' | translate }}
+        TODO contact support ou admin toggle
+        préremplir info formulaire
+    </h1>
+    <mat-divider></mat-divider>
+
+    <!-- Choix du destinataire -->
+    <section *ngIf="!receiver" class="receiver-choice">
+        <div class="row text-center">
+            <div class="col-12 col-md-6 mt-3 px-1">
+                <div class="card" matRipple (click)="receiver = 'support'">
+                    <div class="card-body text-muted">
+                        <div class="card-title">
+                            <mat-icon>build</mat-icon>
+                        </div>
+                        Vous rencontrez un problème technique lié à l'application.
+                        <div class="card-subtitle color-primary h3 mt-2">
+                            Contacter le support
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mt-3 px-3">
+                <div class="card" matRipple (click)="receiver = 'admin'">
+                    <div class="card-body text-muted">
+                        <div class="card-title">
+                            <mat-icon>settings_applications</mat-icon>
+                        </div>
+                        Vous rencontrez un problème fonctionnel.
+                        <div class="card-subtitle color-primary h3 mt-2">Contacter un Administrateur</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de contact -->
+    <section *ngIf="receiver" class="form">
+        <!-- Bouton retour au choix de destinataire -->
+        <div class="text-right my-2">
+            <button mat-flat-button color="primary" (click)="receiver = ''">
+                <mat-icon>reply</mat-icon> TOTORETOUR
+            </button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div *ngIf="!post; else forminfo" novalidate>
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)" class="form">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <!-- Login -->
+                                <mat-form-field class="form-element mt-3">
+                                    <mat-label>{{ 'CONTACT.INPUT_LOGIN' | translate }}</mat-label>
+                                    <input matInput disabled [value]="login.value">
+                                    <mat-icon matPrefix class="mr-2">assignment_ind</mat-icon>
+                                    <mat-error *ngIf="!login.valid && login.touched">
+                                        {{ titleAlert | translate }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <!-- Nom -->
+                                <mat-form-field class="form-element mt-3">
+                                    <input matInput placeholder="{{ 'CONTACT.INPUT_NAME' | translate }}"
+                                        formControlName="name">
+                                    <mat-icon matPrefix class="mr-2">person</mat-icon>
+                                    <mat-error *ngIf="!name.valid && name.touched">
+                                        {{ titleAlert | translate }}
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- Téléphone -->
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <!-- Prénom -->
+                                <mat-form-field class="form-element mt-3">
+                                    <input matInput placeholder="{{ 'CONTACT.INPUT_FIRSTNAME' | translate }}"
+                                        formControlName="firstName">
+                                    <mat-icon matPrefix class="mr-2">person</mat-icon>
+                                    <mat-error *ngIf="!firstName.valid && firstName.touched">
+                                        {{ titleAlert | translate }}
+                                    </mat-error>
+                                </mat-form-field>
+                                <!-- Email -->
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

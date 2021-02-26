@@ -1,5 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppConfig } from 'src/app/app.config';
 
 @Component({
   selector: 'app-container',
@@ -9,12 +11,13 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 export class ContainerComponent implements OnInit {
   mobileQuery: MediaQueryList;
   screenWidth: number;
-  mobileWidth: number = 768;
+  mobileWidth: number = AppConfig.configs.mobileMaxWidth;
   private mobileQueryListener: () => void;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher
+    media: MediaMatcher,
+    private router: Router
   ) {
     this.mobileQuery = media.matchMedia('(max-width: ' + this.mobileWidth + 'px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -29,6 +32,10 @@ export class ContainerComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  isPageContact():boolean {
+    return this.router.url === '/contact';
   }
 
 }

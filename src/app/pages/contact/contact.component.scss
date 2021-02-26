@@ -1,0 +1,30 @@
+@import '../../../variables';
+
+section.receiver-choice {
+    .card {
+        min-height: 220px;
+        cursor: pointer;
+        mat-icon {
+            height: 60px;
+            width: 60px;
+            font-size: 60px;
+            color: $color-primary;
+        }
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+    }
+}
+
+section.form {
+    .mat-form-field {
+        line-height: 13px;
+    }
+    .mat-icon {
+        color: $color-primary;
+    }
+    .form-element {
+        width: 100%;
+    }
+}
+

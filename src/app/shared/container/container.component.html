@@ -14,4 +14,4 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
-<app-contact-box></app-contact-box>
+<app-contact-box *ngIf="!isPageContact()"></app-contact-box>
