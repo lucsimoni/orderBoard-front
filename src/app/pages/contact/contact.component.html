@@ -73,7 +73,16 @@
                                         {{ titleAlert | translate }}
                                     </mat-error>
                                 </mat-form-field>
-                                <!-- Téléphone -->
+                                <!-- Email -->
+                                <mat-form-field class="form-element mt-3">
+                                    <input matInput placeholder="{{ 'CONTACT.INPUT_EMAIL' | translate }}"
+                                        formControlName="email">
+                                    <mat-icon matPrefix class="mr-2">email</mat-icon>
+                                    <mat-error
+                                        *ngIf="!contactForm.controls['email'].valid && contactForm.controls['email'].touched">
+                                        {{ getErrorEmail() }}
+                                    </mat-error>
+                                </mat-form-field>
                             </div>
                             <div class="col-12 col-md-6">
                                 <!-- Prénom -->
@@ -85,15 +94,41 @@
                                         {{ titleAlert | translate }}
                                     </mat-error>
                                 </mat-form-field>
-                                <!-- Email -->
-
+                                <!-- Téléphone -->
+                                <mat-form-field class="form-element mt-3">
+                                    <input matInput placeholder="{{ 'CONTACT.INPUT_PHONE' | translate }} (optionnel)"
+                                        formControlName="phone">
+                                    <mat-icon matPrefix class="mr-2">phone</mat-icon>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
-
+                            <div class="col-12">
+                                <!-- Message -->
+                                <mat-form-field class="form-element mt-3">
+                                    <textarea matInput placeHolder="{{'CONTACT.INPUT_MESSAGE' | translate }}"
+                                        formControlName="message" maxLength="300"></textarea>
+                                    <mat-icon class="mr-2">comment</mat-icon>
+                                    <mat-error *ngIf="!message.valid && message.touched">
+                                        {{ titleAlert | translate }}
+                                    </mat-error>
+                                </mat-form-field>
+                                probleme placeholder
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-element mt-3 text-center">
+                                    <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!contactForm.valid">{{ 'CONTACT.INPUT_SUBMIT' | translate }}</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
+                <!-- Résultat de soumission -->
+                <ng-template #forminfo class="result">
+                    {{ post | json }}
+                </ng-template>
             </div>
         </div>
     </section>

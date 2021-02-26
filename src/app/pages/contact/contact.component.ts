@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from 'src/app/app.config';
 
 @Component({
@@ -29,10 +28,9 @@ export class ContactComponent implements OnInit {
       'name': [null, Validators.required],
       'firstName': [null, Validators.required],
       'login': ['toto', Validators.required],
-      'email': [null, Validators.required, Validators.pattern(emailRegex)],
+      'email': [null, [Validators.required, Validators.pattern(emailRegex)]],
       'phone': [null],
-      'message': [null, Validators.required],
-      'validate': ''
+      'message': [null, Validators.required]
     })
   }
 
@@ -60,7 +58,7 @@ export class ContactComponent implements OnInit {
     return this.contactForm.get('message') as FormControl;
   }
 
-  getErrorEmail() {
+  getErrorEmail(): string {
     return this.contactForm.get('email').hasError('required') ? this.titleAlert : 
       this.contactForm.get('email').hasError('pattern') ? 'CONTACT.EMAIL_UNVALID' : '';
   }
