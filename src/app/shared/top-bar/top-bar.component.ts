@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SessionStorageService } from 'src/app/services/storage/session-storage.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import * as moment from 'moment';
+import { User } from 'src/app/models/user/user.model';
 
 @Component({
   selector: 'app-top-bar',
@@ -36,6 +37,20 @@ export class TopBarComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+  }
+
+  /**
+   * Affiche le nom sous la forme : Luc SIMONI => L. SIMONI
+   * Sinon on affiche "mon compte" si des données sont manquantes
+   */
+  getUserName():string {
+    const user:User = this.sessionStorageService.getUser();
+    if(user) {
+      if(user.firstname && user.name) {
+        return user.firstname.charAt(0).toUpperCase() + '. ' + user.name;
+      }
+    }
+    return this.translateService.instant('HEADER.ACCOUNT');
   }
 
 }

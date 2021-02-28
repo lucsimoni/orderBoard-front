@@ -20,7 +20,7 @@
             <div class="controls col-6 text-right" *ngIf="isLoggedIn()">
                 <button mat-button class="d-none d-md-inline-block" matTooltip="{{ 'HEADER.ACCOUNT' | translate }}">
                     <mat-icon>person</mat-icon>
-                    <strong class="ml-2">J. DOE</strong>
+                    <strong class="ml-2">{{ getUserName() }}</strong>
                 </button>
                 <button mat-button matTooltip="{{ 'HEADER.LOGOUT' | translate }}" (click)="logout()">
                     <mat-icon>power_settings_new</mat-icon>
