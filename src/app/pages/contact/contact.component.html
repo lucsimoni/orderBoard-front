@@ -1,9 +1,7 @@
 <main class="container-fluid mb-3">
     <h1 class="text-muted">
         <mat-icon class="mr-3">forum</mat-icon>
-        {{ 'Contact / Aide' | translate }}
-        TODO contact support ou admin toggle
-        préremplir info formulaire
+        {{ 'CONTACT.TITLE' | translate }}
     </h1>
     <mat-divider></mat-divider>
 
@@ -16,9 +14,9 @@
                         <div class="card-title">
                             <mat-icon>build</mat-icon>
                         </div>
-                        Vous rencontrez un problème technique lié à l'application.
+                        {{'CONTACT.SUPPORT_MESSAGE' | translate }}
                         <div class="card-subtitle color-primary h3 mt-2">
-                            Contacter le support
+                            {{'CONTACT.SUPPORT_TITLE' | translate }}
                         </div>
                     </div>
                 </div>
@@ -29,8 +27,8 @@
                         <div class="card-title">
                             <mat-icon>settings_applications</mat-icon>
                         </div>
-                        Vous rencontrez un problème fonctionnel.
-                        <div class="card-subtitle color-primary h3 mt-2">Contacter un Administrateur</div>
+                        {{'CONTACT.ADMIN_MESSAGE' | translate }}
+                        <div class="card-subtitle color-primary h3 mt-2">{{'CONTACT.ADMIN_MESSAGE' | translate }}</div>
                     </div>
                 </div>
             </div>
@@ -39,13 +37,7 @@
 
     <!-- Formulaire de contact -->
     <section *ngIf="receiver" class="form">
-        <!-- Bouton retour au choix de destinataire -->
-        <div class="text-right my-2">
-            <button mat-flat-button color="primary" (click)="receiver = ''">
-                <mat-icon>reply</mat-icon> TOTORETOUR
-            </button>
-        </div>
-        <div class="card">
+        <div class="card mt-3">
             <div class="card-body">
                 <div *ngIf="!post; else forminfo" novalidate>
                     <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)" class="form">
@@ -60,6 +52,12 @@
                                         {{ titleAlert | translate }}
                                     </mat-error>
                                 </mat-form-field>
+                            </div>
+                            <!-- Bouton retour au choix de destinataire -->
+                            <div class="col-12 col-md-6 text-right">
+                                <button mat-flat-button color="primary" (click)="receiver = ''">
+                                    <mat-icon>reply</mat-icon>{{ 'CONTACT.BACK_BUTTON' | translate }}
+                                </button>
                             </div>
                         </div>
                         <div class="row">
@@ -96,7 +94,7 @@
                                 </mat-form-field>
                                 <!-- Téléphone -->
                                 <mat-form-field class="form-element mt-3">
-                                    <input matInput placeholder="{{ 'CONTACT.INPUT_PHONE' | translate }} (optionnel)"
+                                    <input matInput placeholder="{{ 'CONTACT.INPUT_PHONE' | translate }}"
                                         formControlName="phone">
                                     <mat-icon matPrefix class="mr-2">phone</mat-icon>
                                 </mat-form-field>
@@ -106,20 +104,25 @@
                             <div class="col-12">
                                 <!-- Message -->
                                 <mat-form-field class="form-element mt-3">
-                                    <textarea matInput placeHolder="{{'CONTACT.INPUT_MESSAGE' | translate }}"
-                                        formControlName="message" maxLength="300"></textarea>
-                                    <mat-icon class="mr-2">comment</mat-icon>
+                                    <mat-label>
+                                        <mat-icon class="mr-2">comment</mat-icon>
+                                        {{'CONTACT.INPUT_MESSAGE' | translate }}
+                                    </mat-label>
+                                    <textarea matInput formControlName="message" maxLength="300" cdkTextareaAutosize
+                                        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="10"
+                                        cdkAutosizeMaxRows="10"></textarea>
                                     <mat-error *ngIf="!message.valid && message.touched">
                                         {{ titleAlert | translate }}
                                     </mat-error>
                                 </mat-form-field>
-                                probleme placeholder
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-element mt-3 text-center">
-                                    <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!contactForm.valid">{{ 'CONTACT.INPUT_SUBMIT' | translate }}</button>
+                                    <button mat-raised-button color="primary" type="submit" class="button"
+                                        [disabled]="!contactForm.valid">{{ 'CONTACT.INPUT_SUBMIT' | translate
+                                        }}</button>
                                 </div>
                             </div>
                         </div>

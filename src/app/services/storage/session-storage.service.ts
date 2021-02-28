@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Observable, Subject } from 'rxjs';
+import { User } from 'src/app/models/user/user.model';
 
 const STORAGE_LANG = 'storage_lang';
 
@@ -36,6 +37,15 @@ export class SessionStorageService {
   }
   setSearchFilters(filters) {
     this.storage.set('test',filters);
+  }
+
+  /*** USER ***/
+  getUser(): User {
+    return this.storage.get('user');
+  }
+
+  setUser(user: User) {
+    this.storage.set('user', user);
   }
 
   /*** LANG ***/

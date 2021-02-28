@@ -31,8 +31,8 @@ export class ApiService {
 
     constructor(
         private httpClient: HttpClient,
-        private authenticationService:AuthenticationService
-    ) {}
+        private authenticationService: AuthenticationService
+    ) { }
 
     /**
      *  used for the methods that contains the body

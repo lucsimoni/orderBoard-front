@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppConfig } from 'src/app/app.config';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-contact',
@@ -9,8 +10,10 @@ import { AppConfig } from 'src/app/app.config';
 })
 export class ContactComponent implements OnInit {
 
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+
   receiver: string;
-  titleAlert: string = 'CONTACT.INPUT.EMPTY';
+  titleAlert: string = 'CONTACT.INPUT_EMPTY';
   contactForm: FormGroup;
   post:any = '';
 

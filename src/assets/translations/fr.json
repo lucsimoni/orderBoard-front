@@ -33,5 +33,22 @@
     },
     "CONTACT_BOX": {
         "CONTACT_US": "Contact / Aide"
+    },
+    "CONTACT": {
+        "INPUT_EMPTY": "Champs requis",
+        "EMAIL_UNVALID": "Email non valide",
+        "TITLE": "Contact / Aide",
+        "SUPPORT_MESSAGE": "Vous rencontrez un problème technique lié à l'application.",
+        "SUPPORT_TITLE": "Contacter le support",
+        "ADMIN_MESSAGE": "Vous rencontrez un problème fonctionnel.",
+        "ADMIN_TITLE": "Contacter un administrateur",
+        "BACK_BUTTON": "Retour",
+        "INPUT_LOGIN": "Login",
+        "INPUT_NAME": "Nom",
+        "INPUT_EMAIL": "Email",
+        "INPUT_FIRSTNAME": "Prénom",
+        "INPUT_PHONE": "Téléphone (optionnel)",
+        "INPUT_MESSAGE": "Message (300 caractères)",
+        "INPUT_SUBMIT": "Envoyer"
     }
 }

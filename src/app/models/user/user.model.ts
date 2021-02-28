@@ -2,11 +2,10 @@ export interface User {
     id: string,
     firstname: string,
     name: string,
-    lastConnection: string,
+    lastConnection?: string,
     login: string,
-    //todo
+    email: string,
+    phone?: string,
     orders?: any[], 
-    password: string,
     role: string
-    firstConnection?: boolean
 }

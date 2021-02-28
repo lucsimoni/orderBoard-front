@@ -33,5 +33,22 @@
     },
     "CONTACT_BOX": {
         "CONTACT_US": "Contact / Help"
+    },
+    "CONTACT": {
+        "INPUT_EMPTY": "Field required",
+        "EMAIL_UNVALID": "Email unvalid",
+        "TITLE": "Contact / Help",
+        "SUPPORT_MESSAGE": "You have a technical problem with the application.",
+        "SUPPORT_TITLE": "Contact support",
+        "ADMIN_MESSAGE": "You have a functional problem.",
+        "ADMIN_TITLE": "Contact an administrator",
+        "BACK_BUTTON": "Back",
+        "INPUT_LOGIN": "Login",
+        "INPUT_NAME": "Name",
+        "INPUT_EMAIL": "Email",
+        "INPUT_FIRSTNAME": "Firstname",
+        "INPUT_PHONE": "Phone (optionnal)",
+        "INPUT_MESSAGE": "Message (300 characters)",
+        "INPUT_SUBMIT": "Send"
     }
 }

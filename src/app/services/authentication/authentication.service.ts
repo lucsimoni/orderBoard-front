@@ -22,20 +22,19 @@ export class AuthenticationService {
     private dialog: MatDialog
   ) { }
 
-  public isAuthenticated() {
+  public isAuthenticated(): boolean {
     let authVal = false;
     this.isLoggedIn.subscribe((res) => { authVal = res });
     return authVal;
   }
 
-  login() {
-    this.authSubject.next(true);
-    this.startTimer();
+  setAuthSubject(value: boolean) {
+    this.authSubject.next(value);
   }
 
   logout() {
     this.sessionStorageService.clear();
-    this.authSubject.next(false);
+    this.setAuthSubject(false);
     this.stopTimer();
     this.router.navigate(['/']);
   }
