@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppConfig } from 'src/app/app.config';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import { User } from 'src/app/models/user/user.model';
+import { SessionStorageService } from 'src/app/services/storage/session-storage.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,27 +14,30 @@ export class ContactComponent implements OnInit {
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
+  user:User;
   receiver: string;
   titleAlert: string = 'CONTACT.INPUT_EMPTY';
   contactForm: FormGroup;
   post:any = '';
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private sessionStorageService: SessionStorageService
   ) { }
 
   ngOnInit(): void {
+    this.user = this.sessionStorageService.getUser();
     this.createForm();
   }
 
   createForm() {
     let emailRegex: RegExp = AppConfig.configs.emailRegex;
     this.contactForm = this.formBuilder.group({
-      'name': [null, Validators.required],
-      'firstName': [null, Validators.required],
-      'login': ['toto', Validators.required],
-      'email': [null, [Validators.required, Validators.pattern(emailRegex)]],
-      'phone': [null],
+      'name': [this.user ? this.user.name : null, Validators.required],
+      'firstName': [this.user ? this.user.firstname : null, Validators.required],
+      'login': [this.user ? this.user.login : null, Validators.required],
+      'email': [this.user ? this.user.email : null, [Validators.required, Validators.pattern(emailRegex)]],
+      'phone': [this.user ? this.user.phone : null],
       'message': [null, Validators.required]
     })
   }
