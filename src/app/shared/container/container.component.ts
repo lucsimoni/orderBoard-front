@@ -38,4 +38,15 @@ export class ContainerComponent implements OnInit {
     return this.router.url === '/contact';
   }
 
+  /**
+   * Reload d'une page en douceur
+   */
+  // changeGlobalInfo(info: string) {
+  //   this.sessionStorageService.setGlobalInfo(info);
+  //   this.info = info;
+  //   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  //   this.router.onSameUrlNavigation = 'reload';
+  //   this.router.navigate([this.router.url]);
+  // }
+
 }
