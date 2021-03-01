@@ -7,6 +7,7 @@ import { Credentials } from '../../models/authentication/credentials';
 import { LoginService } from 'src/app/services/authentication/login.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { SessionStorageService } from 'src/app/services/storage/session-storage.service';
+import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private loginService: LoginService,
-    private sessionStorageService: SessionStorageService
+    private sessionStorageService: SessionStorageService,
+    private localStorageService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +36,19 @@ export class LoginComponent implements OnInit {
       login: [null, [Validators.required/*, this.loginValidator.bind(this)*/]],
       password: [null, Validators.required/*, Validators.pattern(regex)*/]
     });
+    this.fillWithPreviousLogin();
   }
 
   get l() {
     return this.loginForm.controls;
+  }
+
+  // Prérempli le login avec le login en localStorage
+  fillWithPreviousLogin() {
+    const loginInLocalStorage = this.localStorageService.get('loginStorage');
+    if(loginInLocalStorage) {
+      this.loginForm.patchValue({ login: loginInLocalStorage });
+    }
   }
 
   resetLogin() {
@@ -80,6 +91,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(credentials).subscribe(
       (user) => {
         this.sessionStorageService.setUser(user);
+        this.localStorageService.set('loginStorage', this.loginForm.controls.login.value);
         this.authenticationService.setAuthSubject(true);
         this.authenticationService.startTimer();
         this.isLoading = false;
@@ -109,20 +121,5 @@ export class LoginComponent implements OnInit {
   //   return false;
   // }
 
-  //Prerempli le login pour la prochaine connexion
-  // constuctor : private storage: Storage
-
-  //Dans le subscribe de la methode de login
-  // this.storage.set('loginStorage', this.loginForm.controls.login.value);
-
-  // Méthode appelée dans le ngoninit apres this.loginForm = this.formBuilder.group({
-  // fillWithPreviousLogin() {
-  //   this.storage.get('loginStorage').then(
-  //     (res) => {
-  //       if(res !== null && res !== undefined) {
-  //         this.loginForm.patchValue({ login: res });
-  //       } 
-  //     })
-  // }
 
 }
