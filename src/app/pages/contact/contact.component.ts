@@ -36,6 +36,7 @@ export class ContactComponent implements OnInit {
       'name': [this.user ? this.user.name : null, Validators.required],
       'firstName': [this.user ? this.user.firstname : null, Validators.required],
       'login': [this.user ? this.user.login : null, Validators.required],
+      'shop': [this.user ? this.user.shop : null, Validators.required],
       'email': [this.user ? this.user.email : null, [Validators.required, Validators.pattern(emailRegex)]],
       'phone': [this.user ? this.user.phone : null],
       'message': [null, Validators.required]
@@ -52,6 +53,10 @@ export class ContactComponent implements OnInit {
 
   get login() {
     return this.contactForm.get('login') as FormControl;
+  }
+
+  get shop() {
+    return this.contactForm.get('shop') as FormControl;
   }
 
   get email() {

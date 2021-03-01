@@ -49,6 +49,7 @@
         "INPUT_FIRSTNAME": "Firstname",
         "INPUT_PHONE": "Phone (optionnal)",
         "INPUT_MESSAGE": "Message (300 characters)",
-        "INPUT_SUBMIT": "Send"
+        "INPUT_SUBMIT": "Send",
+        "INPUT_SHOP": "Shop"
     }
 }

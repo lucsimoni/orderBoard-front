@@ -49,6 +49,7 @@
         "INPUT_FIRSTNAME": "Prénom",
         "INPUT_PHONE": "Téléphone (optionnel)",
         "INPUT_MESSAGE": "Message (300 caractères)",
-        "INPUT_SUBMIT": "Envoyer"
+        "INPUT_SUBMIT": "Envoyer",
+        "INPUT_SHOP": "Magasin"
     }
 }

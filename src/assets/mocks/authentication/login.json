@@ -6,5 +6,6 @@
     "email": "lsimoni@mail.fr",
     "phone": "0656235577",
     "orders": [], 
-    "role": "admin"
+    "role": "admin",
+    "shop": "Marseille"
 }

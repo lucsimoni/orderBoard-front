@@ -42,7 +42,7 @@
                 <div *ngIf="!post; else forminfo" novalidate>
                     <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)" class="form">
                         <div class="row">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <!-- Login -->
                                 <mat-form-field class="form-element mt-3">
                                     <mat-label>{{ 'CONTACT.INPUT_LOGIN' | translate }}</mat-label>
@@ -53,8 +53,19 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
+                            <!-- SHOP -->
+                            <div class="col-12 col-md-4">
+                                <mat-form-field class="form-element mt-3">
+                                    <mat-label>{{ 'CONTACT.INPUT_SHOP' | translate }}</mat-label>
+                                    <input matInput disabled [value]="shop.value">
+                                    <mat-icon matPrefix class="mr-2">map</mat-icon>
+                                    <mat-error *ngIf="!shop.valid && shop.touched">
+                                        {{ titleAlert | translate }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
                             <!-- Bouton retour au choix de destinataire -->
-                            <div class="col-12 col-md-6 text-right">
+                            <div class="col-12 col-md-4 text-right">
                                 <button mat-flat-button color="primary" (click)="receiver = ''">
                                     <mat-icon>reply</mat-icon>{{ 'CONTACT.BACK_BUTTON' | translate }}
                                 </button>

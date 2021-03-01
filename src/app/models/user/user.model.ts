@@ -7,5 +7,6 @@ export interface User {
     email: string,
     phone?: string,
     orders?: any[], 
-    role: string
+    role: string,
+    shop: string
 }
