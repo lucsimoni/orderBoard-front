@@ -18,7 +18,7 @@
                 {{ 'TITLE.NAME' | translate }}
             </div>
             <div class="controls col-6 text-right" *ngIf="isLoggedIn()">
-                <button mat-button class="d-none d-md-inline-block" matTooltip="{{ 'HEADER.ACCOUNT' | translate }}">
+                <button mat-button class="d-none d-md-inline-block" (click)="editProfil()" matTooltip="{{ 'HEADER.ACCOUNT' | translate }}">
                     <mat-icon>person</mat-icon>
                     <strong class="ml-2">{{ getUserName() }}</strong>
                 </button>

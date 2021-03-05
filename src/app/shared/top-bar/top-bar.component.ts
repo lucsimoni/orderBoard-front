@@ -4,6 +4,7 @@ import { SessionStorageService } from 'src/app/services/storage/session-storage.
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import * as moment from 'moment';
 import { User } from 'src/app/models/user/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-bar',
@@ -17,7 +18,8 @@ export class TopBarComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private sessionStorageService: SessionStorageService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +53,15 @@ export class TopBarComponent implements OnInit {
       }
     }
     return this.translateService.instant('HEADER.ACCOUNT');
+  }
+
+  editProfil(): void {
+    const user:User = this.sessionStorageService.getUser();
+    if(user) {
+      if(user.login) {
+        this.router.navigate(['user/' + user.login]);
+      }
+    }
   }
 
 }
