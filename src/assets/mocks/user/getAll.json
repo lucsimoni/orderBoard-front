@@ -1,4 +1,112 @@
-{
-    "test": "toto",
-    "test2": "riri"
-}
+[
+    {
+        "firstname": "Luc",
+        "name": "Simoni",
+        "lastConnection": null,
+        "login": "lsimoni",
+        "email": "lsimoni@orderboard.fr",
+        "phone": "0656235577",
+        "orders": [],
+        "role": "admin",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Valentin",
+        "name": "Abeille",
+        "lastConnection": null,
+        "login": "vabeille",
+        "email": "vabeille@orderboard.fr",
+        "phone": "0656235487",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Henri",
+        "name": "Adeline",
+        "lastConnection": null,
+        "login": "hadeline",
+        "email": "hadeline@orderboard.fr",
+        "phone": "0656239942",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Edouard",
+        "name": "Alexander",
+        "lastConnection": null,
+        "login": "ealexander",
+        "email": "ealexander@orderboard.fr",
+        "phone": "0656271329",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "André",
+        "name": "Girard",
+        "lastConnection": null,
+        "login": "agirard",
+        "email": "agirard@mail.fr",
+        "phone": "065611954",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Lionel",
+        "name": "Dubray",
+        "lastConnection": null,
+        "login": "ldubray",
+        "email": "ldubray@orderboard.fr",
+        "phone": "0656237146",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Tom",
+        "name": "Morel",
+        "lastConnection": null,
+        "login": "tmorel",
+        "email": "tmorel@orderboard.fr",
+        "phone": "0656231111",
+        "orders": [],
+        "role": "admin",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Georges",
+        "name": "Séguy",
+        "lastConnection": null,
+        "login": "gseguy",
+        "email": "gseguy@orderboard.fr",
+        "phone": "0656247751",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Suzanne",
+        "name": "Leclézio",
+        "lastConnection": null,
+        "login": "sleclezio",
+        "email": "sleclezio@orderboard.fr",
+        "phone": "065623871",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    },
+    {
+        "firstname": "Charles",
+        "name": "Bichat",
+        "lastConnection": null,
+        "login": "cbichat",
+        "email": "cbichat@orderboard.fr",
+        "phone": "0656237611",
+        "orders": [],
+        "role": "user",
+        "shop": "Marseille"
+    }
+]
