@@ -59,7 +59,7 @@ export class TopBarComponent implements OnInit {
     const user:User = this.sessionStorageService.getUser();
     if(user) {
       if(user.login) {
-        this.router.navigate(['user/' + user.login]);
+        this.router.navigate(['user/' + user.login, user]);
       }
     }
   }

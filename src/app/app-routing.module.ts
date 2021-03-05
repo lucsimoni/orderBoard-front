@@ -24,6 +24,7 @@ const routes: Routes = [
         { path: 'dashboard', component: DashboardComponent },
         { path: 'products', component: ProductsComponent },
         { path: 'users', component: UsersComponent },
+        //TODO guard user
         { path: 'user/:login', component: UserComponent },
         { path: 'contact', component: ContactComponent },
         { path: 'not-found', component: NotFoundComponent }
