@@ -1,11 +1,17 @@
-<h1>
-    <mat-icon class="mr-3">person_pin</mat-icon> 
-    {{ 'USERS.TITLE' | translate }}
-</h1>
-<mat-divider></mat-divider>
+<main class="container-fluid mb-3">
+    <h1 class="text-muted">
+        <mat-icon class="mr-3">groups</mat-icon>
+        {{ 'USERS.TITLE' | translate }}
+    </h1>
+    <mat-divider></mat-divider>
 
-<pre>
-    {{ users | json }}
-</pre>
+    <section class="mt-3 card" *ngIf="sellers">
+        <div class="card-body">
+            <pre>
+                {{ sellers | json }}
+            </pre>
+        </div>
+    </section>
 
+</main>
 <ngx-loading [show]="isLoading"></ngx-loading>

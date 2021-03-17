@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ErrorService } from 'src/app/services/error/error.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from '../../models/user/user.model';
@@ -10,9 +11,8 @@ import { User } from '../../models/user/user.model';
 })
 export class UsersComponent implements OnInit {
 
-  public users: User[] = [];
   public isLoading: boolean;
-
+  public sellers: User[];
 
   constructor(
     private userService: UserService,
@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
     this.isLoading = true;
     this.userService.getAll().subscribe(
       (res) => {
-        this.users = Object.assign([], res);
+        this.sellers = Object.assign([], res);
         this.isLoading = false;
       },
       (error) => {

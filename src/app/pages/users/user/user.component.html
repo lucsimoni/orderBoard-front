@@ -1,3 +1,14 @@
 <pre>
 {{editedUser | json}}
 </pre>
+
+
+
+<main *ngIf="editedUser" class="container-fluid mb-3">
+    <h1 class="text-muted">
+        <mat-icon class="mr-3">person_pin</mat-icon>
+        {{ editedUser.firstname }} {{ editedUser.name }}
+    </h1>
+    <mat-divider></mat-divider>
+
+</main>

@@ -18,7 +18,7 @@ export class SideBarComponent implements OnInit {
     { 'icon': 'folder', 'title': 'MENU.PRODUCTS', 'path': '/products' },
     { 'icon': 'folder', 'title': 'MENU.CLIENTS', 'path': '/client' },
     { 'icon': 'folder', 'title': 'MENU.SHOP', 'path': '/shop' },
-    { 'icon': 'person_pin', 'title': 'MENU.USERS', 'path': '/users' },
+    { 'icon': 'groups', 'title': 'MENU.USERS', 'path': '/users' },
     { 'icon': 'folder', 'title': 'Not Found', 'path': '/not-found' }
   ];
 
