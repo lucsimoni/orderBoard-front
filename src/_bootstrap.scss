@@ -1,7 +1,10 @@
 $theme-colors: (
   "primary": $color-primary,
-  "danger": $color-warn,
-  "info" : $color-accent
+  "secondary": $color-secondary,
+  "success": $color-success,
+  "warning": $color-warning,
+  "danger" : $color-danger,
+  "info": $color-info
 );
 
 @import "~bootstrap/scss/bootstrap";

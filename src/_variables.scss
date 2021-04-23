@@ -4,13 +4,24 @@
 
 /**** colors ****/
 $color-primary: #0fc4b2;
-$color-accent: #ffcc42;
-$color-warn: #d20909;
-$color-light: #eaeaea;
+$color-secondary: #ffcc42;
 
-// https://materialtheme.arcsine.dev/
-// pour la palette
-// http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
+$color-light: #eaeaea;
+$color-grey: #5e5e5e;
+$color-dark: #222222;
+
+$color-success: #10dc61;
+$color-warning: #eb7507;
+$color-danger: #bd1e0E;
+$color-info: #4eb8ff;
+
+
+
+/***
+ Génération de palette 
+ https://materialtheme.arcsine.dev/
+ http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
+***/
 
 /*** colors Menu ***/
 $color-menu-1: #04a28a;
