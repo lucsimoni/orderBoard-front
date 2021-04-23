@@ -3,8 +3,8 @@ import { UserService } from '../../services/user/user.service';
 import { environment } from '../../../environments/environment';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login/login.service';
 import { Credentials } from '../../models/authentication/credentials';
-import { LoginService } from 'src/app/services/authentication/login.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { SessionStorageService } from 'src/app/services/storage/session-storage.service';
 import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
@@ -119,6 +119,33 @@ export class LoginComponent implements OnInit {
   //   if(login.errors.errorLogin)
   //     return true;
   //   return false;
+  // }
+
+    // login2(credentials: Credentials):User {
+  //   this.utilsService.setLoader(true);
+  //   // = new User()
+  //   let mockInfos: MockInfos = { mockFolder: 'authentication', mockService: 'login' };
+  //   const input = {
+  //     "login": credentials.login,
+  //     "password": credentials.password
+  //   }
+  //   this.apiService.sendRequestPost(this.requestMapping + '/login', input, mockInfos).subscribe(
+  //     (result) => {
+  //       this.sessionStorageService.setUser(result as User);
+  //       this.localStorageService.set('loginStorage', credentials.login);
+  //       this.authenticationService.setAuthSubject(true);
+  //       this.authenticationService.startTimer();
+  //       this.utilsService.setLoader(false);
+  //       this.router.navigate(['/dashboard']);
+  //     },
+  //     (error) => {
+  //       //TODO manage error
+  //       // this.errorService.manageError('02:01');
+  //       //utilsService.manageError() ou utilsService.manageSuccess
+  //       this.utilsService.setLoader(false);
+  //       return null;
+  //     }
+  //   )
   // }
 
 

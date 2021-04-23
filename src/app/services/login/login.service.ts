@@ -22,6 +22,6 @@ export class LoginService {
       "login": credentials.login,
       "password": credentials.password
     }
-    return this.apiService.sendRequestPostOrUpdate(this.requestMapping + '/login', 'post', input, mockInfos);
+    return this.apiService.sendRequestPostOrUpdate(this.requestMapping + '/login', 'post', input, mockInfos) as Observable<User>;
   }
 }
