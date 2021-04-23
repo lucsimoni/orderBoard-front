@@ -1,18 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, retry } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { MockInfos } from '../../models/mock-infos/mock-infos.model';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { SessionStorageService } from '../storage/session-storage.service';
 
-
-// import { SessionService } from '../session.service';
 // Import comme cela
 // import * as _ from 'lodash';
-
-
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +18,7 @@ export class ApiService {
 
     domainUrl: string = environment.domainUrl;
     mock: boolean = environment.mock;
+    mockedWS: string[] = environment.mockedWs;
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -30,8 +28,80 @@ export class ApiService {
 
     constructor(
         private httpClient: HttpClient,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private sessionStorageService: SessionStorageService
     ) { }
+
+    /*** GET METHOD ***/
+    sendRequestGet(wsName: string, mockInfos: MockInfos) {
+        if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
+            return this.callMockedData(mockInfos);
+        } else {
+            this.authenticationService.resetTimer();
+        }
+        return this.httpClient.get<Object>(wsName, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
+            .pipe(
+                retry(3),
+                catchError(this.handleError)
+            )
+    }
+
+    /*** DELETE METHOD ***/
+    sendRequestDelete(wsName: string, mockInfos: MockInfos) {
+        if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
+            return this.callMockedData(mockInfos);
+        } else {
+            this.authenticationService.resetTimer();
+        }
+        return this.httpClient.delete<Object>(wsName, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
+            .pipe(
+                retry(3),
+                catchError(this.handleError)
+            )
+    }
+
+    /*** POST METHOD - CREATE ***/
+    sendRequestPost(wsName: string, body:Object, mockInfos: MockInfos) {
+        if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
+            return this.callMockedData(mockInfos);
+        } else {
+            this.authenticationService.resetTimer();
+        }
+        return this.httpClient.post<Object>(wsName, body, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
+            .pipe(
+                retry(3),
+                catchError(this.handleError)
+            )
+    }
+
+    /*** PUT METHOD - UPDATE ***/
+    sendRequestPut(wsName: string, body:Object, mockInfos: MockInfos) {
+        if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
+            return this.callMockedData(mockInfos);
+        } else {
+            this.authenticationService.resetTimer();
+        }
+        return this.httpClient.put<Object>(wsName, body, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
+            .pipe(
+                retry(3),
+                catchError(this.handleError)
+            )
+    }
+
+    /*** PATCH METHOD ***/
+    sendRequestPatch(wsName: string, body:Object, mockInfos: MockInfos) {
+        if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
+            return this.callMockedData(mockInfos);
+        } else {
+            this.authenticationService.resetTimer();
+        }
+        return this.httpClient.patch<Object>(wsName, body, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
+            .pipe(
+                retry(3),
+                catchError(this.handleError)
+            )
+    }
+
 
     /**
      *  used for the methods that contains the body
@@ -84,23 +154,24 @@ export class ApiService {
         return throwError(error);
     }
 
-    // setToken(data: any) {
-    //     this.sessionStgService.setToken(data.SessionID_base64);
-    // }
+    setToken(data: any) {
+        this.sessionStorageService.setToken(data.SessionID_base64);
+    }
 
-    // getHeaders(wsName) {
-    //     //TODO Rajouter le logout
-    //     if (!this.authService.isAuthenticated() && wsName != '/rdf/login/' && wsName != 'rdf/serviceName' )
-    //         this.authService.logout();
-    //     if (wsName == 'rdf/serviceName' ||  wsName == 'rdf/serviceName') {
-    //         return new HttpHeaders({
-    //             'Content-Type': 'application/json'
-    //         })
-    //     }
-    //     return new HttpHeaders({
-    //         'Content-Type': 'application/json',
-    //         'Authorization': this.sessionStgService.getToken()
-    //     })
-    // }
+    getHeaders(wsName) {
+        if (!this.authenticationService.isAuthenticated()) {
+            if (wsName === 'api/login' || wsName === 'api/resetPassword') {
+                return new HttpHeaders({
+                    'Content-Type': 'application/json'
+                })
+            } else {
+                this.authenticationService.logout();
+            }
+        }
+        return new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': this.sessionStorageService.getToken()
+        });
+    }
 
 }
