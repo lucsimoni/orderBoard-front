@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  public isLoading: boolean = false;
+
+  constructor(
+    private utilsService: UtilsService
+  ) { }
 
   ngOnInit(): void {
+    this.utilsService.watchLoader().subscribe(enable => this.isLoading = enable);
   }
 
 }

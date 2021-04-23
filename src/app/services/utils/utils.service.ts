@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,18 @@ export class UtilsService {
 
   constructor() { }
 
-  //Formatage des données de recherche
+  /***** Loader de chargement *****/
+  private loaderSub = new Subject<boolean>();
+
+  watchLoader(): Observable<boolean> {
+    return this.loaderSub.asObservable();
+  }
+
+  setLoader(isEnable: boolean) {
+    this.loaderSub.next(isEnable);
+  }
+
+  /***** Formatage des données de recherche *****/
   format(element: any) {
     //On passe tout en minuscule
     element = element.toLowerCase();

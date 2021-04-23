@@ -53,4 +53,11 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  test() {
+    this.utilsService.setLoader(true);
+    setTimeout(() => {
+      this.utilsService.setLoader(false);
+    }, 4000);
+  }
+
 }
