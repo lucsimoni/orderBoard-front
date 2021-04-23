@@ -3,8 +3,8 @@ import { BehaviorSubject, timer } from 'rxjs';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '../storage/session-storage.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ExpiredSessionAlertComponent } from './expired-session-alert/expired-session-alert.component';
 import { CONFIGS } from 'src/app/app.config';
+import { ExpiredSessionDialogComponent } from 'src/app/shared/expired-session-dialog/expired-session-dialog.component';
 
 // Durée de session en secondes
 const MAX_SESSION_TIMER = CONFIGS.MAX_SESSION_TIMER;
@@ -70,7 +70,7 @@ export class AuthenticationService {
 
   //Ouverture d'une popup indiquant que la session est expirée
   openExpiredSessionPopUp() {
-    const dialogRef = this.dialog.open(ExpiredSessionAlertComponent, {disableClose: true});
+    const dialogRef = this.dialog.open(ExpiredSessionDialogComponent, {disableClose: true});
     dialogRef.afterClosed().subscribe(() => {
       this.logout();
     });

@@ -23,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from './pages/products/products.component';
 import { AddProductComponent } from './pages/products/add-product/add-product.component';
 import { UsersComponent } from './pages/users/users.component';
-import { ExpiredSessionAlertComponent } from './services/authentication/expired-session-alert/expired-session-alert.component';
 import { ContactBoxComponent } from './shared/contact-box/contact-box.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UserComponent } from './pages/users/user/user.component';
@@ -32,6 +31,7 @@ import { LocalStorageService } from './services/storage/local-storage.service';
 import { UtilsService } from './services/utils/utils.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { APP_CONFIG, CONFIGS } from './app.config';
+import { ExpiredSessionDialogComponent } from './shared/expired-session-dialog/expired-session-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -57,10 +57,10 @@ registerLocaleData(localeFr, 'fr');
     ProductsComponent,
     AddProductComponent,
     UsersComponent,
-    ExpiredSessionAlertComponent,
     ContactBoxComponent,
     ContactComponent,
-    UserComponent
+    UserComponent,
+    ExpiredSessionDialogComponent
   ],
   imports: [
     BrowserModule,
