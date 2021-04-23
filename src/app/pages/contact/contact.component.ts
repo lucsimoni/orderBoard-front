@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AppConfig } from 'src/app/app.config';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import { User } from 'src/app/models/user/user.model';
 import { SessionStorageService } from 'src/app/services/storage/session-storage.service';
+import { CONFIGS } from 'src/app/app.config';
 
 @Component({
   selector: 'app-contact',
@@ -31,7 +31,7 @@ export class ContactComponent implements OnInit {
   }
 
   createForm() {
-    let emailRegex: RegExp = AppConfig.configs.emailRegex;
+    let emailRegex: RegExp = CONFIGS.EMAIL_REGEX;
     this.contactForm = this.formBuilder.group({
       'name': [this.user ? this.user.name : null, Validators.required],
       'firstName': [this.user ? this.user.firstname : null, Validators.required],

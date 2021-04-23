@@ -1,7 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppConfig } from 'src/app/app.config';
+import { CONFIGS } from 'src/app/app.config';
 
 @Component({
   selector: 'app-container',
@@ -11,7 +11,7 @@ import { AppConfig } from 'src/app/app.config';
 export class ContainerComponent implements OnInit {
   mobileQuery: MediaQueryList;
   screenWidth: number;
-  mobileWidth: number = AppConfig.configs.mobileMaxWidth;
+  mobileWidth: number = CONFIGS.MOBILE_MAX_WIDTH;
   private mobileQueryListener: () => void;
 
   constructor(

@@ -17,7 +17,6 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { AppConfig } from './app.config';
 import { SessionStorageService } from './services/storage/session-storage.service';
 import localeFr from '@angular/common/locales/fr';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,13 +27,14 @@ import { ExpiredSessionAlertComponent } from './services/authentication/expired-
 import { ContactBoxComponent } from './shared/contact-box/contact-box.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UserComponent } from './pages/users/user/user.component';
+import { ApiService } from './services/api/api.service';
+import { LocalStorageService } from './services/storage/local-storage.service';
+import { UtilsService } from './services/utils/utils.service';
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { APP_CONFIG, CONFIGS } from './app.config';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
-}
-
-export function initializeApp(appConfig: AppConfig) {
-  return () => appConfig.initialize();
 }
 
 export function initializeStorage(sessionStorageService: SessionStorageService) {
@@ -71,11 +71,10 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.pulse,
-      backdropBackgroundColour: 'rgba(255,255,255,0.5)', 
-      backdropBorderRadius: '4px',
-      primaryColour: '#0fc4b2', 
-      secondaryColour: '#57d6c9', 
-      tertiaryColour: '#b7ede8'
+      backdropBackgroundColour: CONFIGS.LOADING.BACKGROUND,
+      primaryColour: CONFIGS.LOADING.COLOR, 
+      secondaryColour: CONFIGS.LOADING.COLOR,
+      tertiaryColour: CONFIGS.LOADING.COLOR,
   }),
     TranslateModule.forRoot({
       loader: {
@@ -85,8 +84,12 @@ registerLocaleData(localeFr, 'fr');
     }
   })],
   providers: [
-    AppConfig,
-    { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppConfig], multi: true },
+    ApiService,
+    SessionStorageService,
+    LocalStorageService,
+    UtilsService,
+    AuthenticationService,
+    { provide: APP_CONFIG, useValue: CONFIGS },
     { provide: APP_INITIALIZER, useFactory: initializeStorage, deps: [SessionStorageService], multi: true },
     { provide: LOCALE_ID, useValue: 'fr-FR' },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
