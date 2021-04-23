@@ -1,6 +1,9 @@
 // .container-fluid {
-//     min-height: 80%;
+//     min-height: 75%;
 //     background-image: url("background");
 //     background-size: contain;
 //     background-repeat: no-repeat;
+//     @include media-breakpoint-down(md) {
+//          background-image: none;
+//        }
 // }

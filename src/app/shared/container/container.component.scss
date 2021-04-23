@@ -1,5 +1,3 @@
-@import '../../../assets/themes/variables';
-
 mat-sidenav {
   width: 250px;
 }
@@ -9,10 +7,8 @@ mat-sidenav-content {
 .icon-menu {
   position: absolute;
   top: 3px;
-  button {
-    color: #ffffff;
-  }
+  color: #ffffff;
 }
 mat-sidenav-container {
-  min-height: 87.4vh;
+  min-height: 77vh;
 }
