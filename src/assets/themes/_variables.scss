@@ -2,6 +2,9 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 
+/**** Thème : Marque blanche ****/
+$marque-blanche-theme: false !default;
+
 /**** colors ****/
 $color-primary: #0fc4b2;
 $color-secondary: #ffcc42;
@@ -14,8 +17,6 @@ $color-success: #10dc61;
 $color-warning: #eb7507;
 $color-danger: #bd1e0E;
 $color-info: #4eb8ff;
-
-
 
 /***
  Génération de palette 
@@ -33,3 +34,9 @@ $color-menu-6: #b7ede8;
 
 $font-regular: "open_sans";
 $font-main-title: "caveat";
+
+/*** MARQUE BLANCHE ***/
+@if $marque-blanche-theme {
+    $color-primary: #106317;
+    $color-secondary: #c9198e;
+}

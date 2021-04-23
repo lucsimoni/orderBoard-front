@@ -1,14 +1,14 @@
 /**** Fonts ****/
-@import 'fonts.scss';
+@import 'assets/themes/fonts';
 
 /**** Variables ****/
-@import 'variables.scss';
+@import 'assets/themes/variables';
 
 /**** Bootstrap ****/
-@import "bootstrap.scss";
+@import "assets/themes/bootstrap";
 
 /**** Material ****/
-@import 'material';
+@import 'assets/themes/material';
 
 * {
     font-family: $font-regular;
@@ -24,12 +24,7 @@ button:focus {
     outline: none;
 }
 
-html, body { height: 100%; }
-body { 
-    margin: 0;
-    font-family: $font-regular, "Helvetica Neue", sans-serif;
-}
-
-.color-primary {
-    color: $color-primary;
-}
+.color-primary { color: $color-primary; }
+.color-secondary { color: $color-secondary; }
+.background-primary { background-color: $color-primary; }
+.background-secondary { background-color: $color-secondary ;}
