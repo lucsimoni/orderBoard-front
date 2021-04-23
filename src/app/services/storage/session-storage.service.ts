@@ -39,6 +39,15 @@ export class SessionStorageService {
     this.storage.set('test',filters);
   }
 
+  /*** TOKEN ***/
+  getToken() {
+    return this.storage.get('token');
+  }
+
+  setToken(token) {
+    this.storage.set('token', token);
+  }
+
   /*** USER ***/
   getUser(): User {
     return this.storage.get('user');

@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { SessionStorageService } from '../storage/session-storage.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ExpiredSessionAlertComponent } from './expired-session-alert/expired-session-alert.component';
+import { CONFIGS } from 'src/app/app.config';
 
-// Durée de session en secondes - 3min 180s
-const MAX_SESSION_TIMER = 180;
+// Durée de session en secondes
+const MAX_SESSION_TIMER = CONFIGS.MAX_SESSION_TIMER;
 
 @Injectable({
   providedIn: 'root'

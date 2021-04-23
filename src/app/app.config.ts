@@ -3,7 +3,7 @@ import { InjectionToken } from "@angular/core";
 export let APP_CONFIG = new InjectionToken('app.config');
 
 export const CONFIGS = {
-    MAX_SESSION_TIMER: 6,
+    MAX_SESSION_TIMER: 180,
     LOADING: {
         BACKGROUND: 'rgba(255,255,255, 0.5)',
         COLOR: '#0fc4b2'

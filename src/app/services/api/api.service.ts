@@ -7,9 +7,8 @@ import { environment } from '../../../environments/environment';
 import { MockInfos } from '../../models/mock-infos/mock-infos.model';
 import { AuthenticationService } from '../authentication/authentication.service';
 
-// import { AuthService } from './auth.service';
-// import { SessionService } from '../session.service';
 
+// import { SessionService } from '../session.service';
 // Import comme cela
 // import * as _ from 'lodash';
 
