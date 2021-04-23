@@ -41,6 +41,13 @@ export class ContactComponent implements OnInit {
       'phone': [this.user ? this.user.phone : null],
       'message': [null, Validators.required]
     })
+
+        // Conversion du montant d'origine à la volée
+    /*this.expenseForm.get('originalAmount').valueChanges.subscribe(() => {
+      this.convertedAmount.patchValue(
+        this.convertOriginalAmount(this.originalAmount.value, this.originalAmountCurrency.value)
+      );
+    });*/
   }
 
   get name() {
