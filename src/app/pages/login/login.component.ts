@@ -8,6 +8,7 @@ import { Credentials } from '../../models/authentication/credentials';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { SessionStorageService } from 'src/app/services/storage/session-storage.service';
 import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-login',
@@ -18,17 +19,16 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   public showPassword: boolean = false;
-  public isLoading: boolean = false;
   // post:any;
 
   constructor(
-    private userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
     private loginService: LoginService,
     private sessionStorageService: SessionStorageService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit(): void {
@@ -59,31 +59,8 @@ export class LoginComponent implements OnInit {
     this.loginForm.controls.password.setValue('');
   }
 
-  testmock() {
-    environment.mock = true;
-    this.testCallBack();
-  }
-
-  testnonmock() {
-    environment.mock = false;
-    this.testCallBack();
-  }
-
-  testCallBack() {
-    console.log('LSI 0');
-    this.userService.getAll().subscribe(
-      (res) => {
-        console.log("LSI SUCCESS", res);
-      },
-      (error) => {
-        console.log("LSI ERREUR");
-
-      }
-    );
-  }
-
   login(credentials: Credentials) {
-    this.isLoading = true;
+    this.utilsService.setLoader(true);
     // Version Démo si le login est "MOCK"
     if (this.loginForm.controls.login.value.toUpperCase() == 'MOCK') {
       environment.mock = true;
@@ -91,16 +68,17 @@ export class LoginComponent implements OnInit {
     this.loginService.login(credentials).subscribe(
       (user) => {
         this.sessionStorageService.setUser(user);
-        this.localStorageService.set('loginStorage', this.loginForm.controls.login.value);
+        this.localStorageService.set('loginStorage', credentials.login);
         this.authenticationService.setAuthSubject(true);
         this.authenticationService.startTimer();
-        this.isLoading = false;
+        this.utilsService.setLoader(false);
         this.router.navigate(['/dashboard']);
       },
       (error) => {
         //TODO manage error
         // this.errorService.manageError('02:01');
-        this.isLoading = false;
+        //utilsService.manageError() ou utilsService.manageSuccess
+        this.utilsService.setLoader(false);
       }
     )
   }
@@ -120,33 +98,4 @@ export class LoginComponent implements OnInit {
   //     return true;
   //   return false;
   // }
-
-    // login2(credentials: Credentials):User {
-  //   this.utilsService.setLoader(true);
-  //   // = new User()
-  //   let mockInfos: MockInfos = { mockFolder: 'authentication', mockService: 'login' };
-  //   const input = {
-  //     "login": credentials.login,
-  //     "password": credentials.password
-  //   }
-  //   this.apiService.sendRequestPost(this.requestMapping + '/login', input, mockInfos).subscribe(
-  //     (result) => {
-  //       this.sessionStorageService.setUser(result as User);
-  //       this.localStorageService.set('loginStorage', credentials.login);
-  //       this.authenticationService.setAuthSubject(true);
-  //       this.authenticationService.startTimer();
-  //       this.utilsService.setLoader(false);
-  //       this.router.navigate(['/dashboard']);
-  //     },
-  //     (error) => {
-  //       //TODO manage error
-  //       // this.errorService.manageError('02:01');
-  //       //utilsService.manageError() ou utilsService.manageSuccess
-  //       this.utilsService.setLoader(false);
-  //       return null;
-  //     }
-  //   )
-  // }
-
-
 }

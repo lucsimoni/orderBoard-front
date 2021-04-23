@@ -11,22 +11,14 @@ export interface User {
     shop: string
 }
 
-// export class UserImpl implements User
-// {
-//     // readonly firstName: string;
+// export class User {
 
 //     constructor(
 //         public id?: string,
-//         public firstname?: string,
-//         public name?: string,
-//         public login?: string,
-//         public email?: string,
-//         public shop?: string,
-//         public role?: string,
-//         public lastConnection?: string,
-//         public phone?: string,
-//         public orders?: any[]
-//     ) {
-//         // this.firstname = firstname;
-//     }
+//         public lastName?: string,
+//         public firstName?: string
+//     )
+
 // }
+
+// toto = new User();
