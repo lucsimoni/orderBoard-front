@@ -19,6 +19,7 @@ export class UtilsService {
     this.loaderSub.next(isEnable);
   }
 
+  
   /***** Formatage des données de recherche *****/
   format(element: any) {
     //On passe tout en minuscule
