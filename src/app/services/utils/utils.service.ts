@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -6,7 +8,10 @@ import { Observable, Subject } from 'rxjs';
 })
 export class UtilsService {
 
-  constructor() { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private translateService: TranslateService
+  ) { }
 
   /***** Loader de chargement *****/
   private loaderSub = new Subject<boolean>();
@@ -40,5 +45,17 @@ export class UtilsService {
     }
     return element;
   }
+
+
+  /***** Manage Success Message *****/
   
+
+  /***** Manage Error Message *****/
+  manageErrors(error:string = '00_00'):void {
+    const wording = this.translateService.instant('ERROR.' + error);
+    this.snackBar.open(wording, 'Error', {
+      duration: 5000,
+    });
+  }
+
 }

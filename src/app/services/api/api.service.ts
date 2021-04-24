@@ -20,12 +20,6 @@ export class ApiService {
     mock: boolean = environment.mock;
     mockedWS: string[] = environment.mockedWs;
 
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        }),
-    };
-
     constructor(
         private httpClient: HttpClient,
         private authenticationService: AuthenticationService,

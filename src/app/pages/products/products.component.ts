@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product/product.model';
 import { ProductService } from '../../services/product/product.service';
 import { UtilsService } from '../../services/utils/utils.service';
-import { ErrorService } from '../../services/error/error.service';
 
 @Component({
   selector: 'app-products',
@@ -18,8 +17,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private utilsService: UtilsService,
-    private errorService: ErrorService
+    private utilsService: UtilsService
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +32,7 @@ export class ProductsComponent implements OnInit {
         this.isLoading = false;
       },
       (error) => {
-        this.errorService.manageError('03:01');
+        // this.errorService.manageError('03:01');
         this.isLoading = false;
       }
     );

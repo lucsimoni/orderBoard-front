@@ -51,5 +51,8 @@
         "INPUT_MESSAGE": "Message (300 caractères)",
         "INPUT_SUBMIT": "Envoyer",
         "INPUT_SHOP": "Magasin"
+    },
+    "ERROR": {
+        "00_00": "Une erreur est survenue."
     }
 }

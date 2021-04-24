@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ErrorService } from 'src/app/services/error/error.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from '../../models/user/user.model';
 
@@ -15,8 +14,7 @@ export class UsersComponent implements OnInit {
   public sellers: User[];
 
   constructor(
-    private userService: UserService,
-    private errorService: ErrorService
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +29,7 @@ export class UsersComponent implements OnInit {
         this.isLoading = false;
       },
       (error) => {
-        this.errorService.manageError('02:01');
+        // this.errorService.manageError('02:01');
         this.isLoading = false;
       }
     )
