@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, catchError, retry } from 'rxjs/operators';
+import { map, catchError, retry, finalize, switchMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { MockInfos } from '../../models/mock-infos/mock-infos.model';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { SessionStorageService } from '../storage/session-storage.service';
+import { UtilsService } from '../utils/utils.service';
 
 // Import comme cela
 // import * as _ from 'lodash';
@@ -23,11 +24,13 @@ export class ApiService {
     constructor(
         private httpClient: HttpClient,
         private authenticationService: AuthenticationService,
-        private sessionStorageService: SessionStorageService
+        private sessionStorageService: SessionStorageService,
+        private utilsService: UtilsService
     ) { }
 
     /*** GET METHOD ***/
     sendRequestGet(wsName: string, mockInfos: MockInfos) {
+        this.utilsService.setLoader(true);
         if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
             return this.callMockedData(mockInfos);
         } else {
@@ -36,12 +39,15 @@ export class ApiService {
         return this.httpClient.get<Object>(wsName, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
             .pipe(
                 retry(3),
-                catchError(this.handleError)
+                // catchError(this.handleError),
+                switchMap(data => of(data).pipe(catchError(this.handleError))),
+                finalize(() => this.utilsService.setLoader(false))
             )
     }
 
     /*** DELETE METHOD ***/
     sendRequestDelete(wsName: string, mockInfos: MockInfos) {
+        this.utilsService.setLoader(true);
         if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
             return this.callMockedData(mockInfos);
         } else {
@@ -50,12 +56,15 @@ export class ApiService {
         return this.httpClient.delete<Object>(wsName, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
             .pipe(
                 retry(3),
-                catchError(this.handleError)
+                // catchError(this.handleError),
+                switchMap(data => of(data).pipe(catchError(this.handleError))),
+                finalize(() => this.utilsService.setLoader(false))
             )
     }
 
     /*** POST METHOD - CREATE ***/
     sendRequestPost(wsName: string, body:Object, mockInfos: MockInfos) {
+        this.utilsService.setLoader(true);
         if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
             return this.callMockedData(mockInfos);
         } else {
@@ -64,12 +73,43 @@ export class ApiService {
         return this.httpClient.post<Object>(wsName, body, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
             .pipe(
                 retry(3),
-                catchError(this.handleError)
+                // catchError(this.handleError),
+                switchMap(data => of(data).pipe(catchError(this.handleError))),
+                finalize(() => this.utilsService.setLoader(false))
             )
     }
 
+
+    //of pour retourner dans le subscribe
+    // subscribe((res)=> {
+    //     return of(res);
+    // })
+
+    // https://makina-corpus.com/blog/metier/2017/premiers-pas-avec-rxjs-dans-angular
+
+    // public login(userName: string, password: string): Observable<User> {
+    //     const service = this;
+    //     return service.api.post('/accounts/login/', {
+    //       'username': userName,
+    //       'password': password
+    //     }).pipe(
+    //       map(userJson => {
+    //         const newUser = <User>({
+    //           name: userJson['name'],
+    //           isAnonymous: false,
+    //         });
+    //         service.authenticatedUser.next(newUser);
+    //         return newUser;
+    //       })
+    //     );
+    //   }
+
+
+
+
     /*** PUT METHOD - UPDATE ***/
     sendRequestPut(wsName: string, body:Object, mockInfos: MockInfos) {
+        this.utilsService.setLoader(true);
         if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
             return this.callMockedData(mockInfos);
         } else {
@@ -78,12 +118,15 @@ export class ApiService {
         return this.httpClient.put<Object>(wsName, body, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
             .pipe(
                 retry(3),
-                catchError(this.handleError)
+                // catchError(this.handleError),
+                switchMap(data => of(data).pipe(catchError(this.handleError))),
+                finalize(() => this.utilsService.setLoader(false))
             )
     }
 
     /*** PATCH METHOD ***/
     sendRequestPatch(wsName: string, body:Object, mockInfos: MockInfos) {
+        this.utilsService.setLoader(true);
         if (this.mock || this.mockedWS.includes(mockInfos.mockFolder + '/' + mockInfos.mockService)) {
             return this.callMockedData(mockInfos);
         } else {
@@ -92,7 +135,9 @@ export class ApiService {
         return this.httpClient.patch<Object>(wsName, body, { headers: this.getHeaders(mockInfos.mockFolder + '/' + mockInfos.mockService) })
             .pipe(
                 retry(3),
-                catchError(this.handleError)
+                // catchError(this.handleError),
+                switchMap(data => of(data).pipe(catchError(this.handleError))),
+                finalize(() => this.utilsService.setLoader(false))
             )
     }
 
@@ -103,6 +148,7 @@ export class ApiService {
      *  body : is a  body content
      */
     sendRequestPostOrUpdate(wsName: string, reqType: string, body: object, mockInfos: MockInfos) {
+        this.utilsService.setLoader(true);
         if (environment.mock) {
             return this.callMockedData(mockInfos);
         } else {
@@ -110,8 +156,8 @@ export class ApiService {
         }
         return this.httpClient[reqType](this.domainUrl + wsName, body/*, { headers: this.getHeaders(wsName) }*/)
             .pipe(
-                map(res => res),
-                catchError(this.handleError)
+                catchError(this.handleError),
+                finalize(() => this.utilsService.setLoader(false)),
             )
     }
 
@@ -122,6 +168,7 @@ export class ApiService {
      * responseType: is XMLHttpRequestResponseType  example 'text'
      * */
     sendRequestGetOrDelete(wsName: string, reqType: string, responseType: string, mockInfos: MockInfos) {
+        this.utilsService.setLoader(true);
         if (environment.mock) {
             return this.callMockedData(mockInfos);
         } else {
@@ -130,7 +177,8 @@ export class ApiService {
         return this.httpClient[reqType](this.domainUrl + wsName/*, { headers: this.getHeaders(wsName) }*/)
             .pipe(
                 map(res => res),
-                catchError(this.handleError)
+                catchError(this.handleError),
+                finalize(() => this.utilsService.setLoader(false)),
             )
     }
 

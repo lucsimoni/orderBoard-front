@@ -19,4 +19,19 @@ export class AppComponent {
     this.translate.use('fr');
     this.sessionStgService.clearLanguage('fr');
   }
+
+  /**
+   * 
+   * Gestion d'état : pattern redux
+   * 
+   * ngxs
+   * 
+   * ajout librairie @ngxs/form-plugin
+   * @ngxs/storage-plugin
+   * @ngxs/store
+   * 
+   * dev dependency
+   * @ngxs/devtools-plugin
+   * 
+   */
 }

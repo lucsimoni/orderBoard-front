@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(credentials: Credentials) {
-    this.utilsService.setLoader(true);
     // Version Démo si le login est "MOCK"
     if (this.loginForm.controls.login.value.toUpperCase() == 'MOCK') {
       environment.mock = true;
@@ -78,7 +77,7 @@ export class LoginComponent implements OnInit {
         //TODO manage error
         // this.errorService.manageError('02:01');
         //utilsService.manageError() ou utilsService.manageSuccess
-        this.utilsService.setLoader(false);
+        console.log("lsi 1", error.error.message);
       }
     )
   }
@@ -98,4 +97,8 @@ export class LoginComponent implements OnInit {
   //     return true;
   //   return false;
   // }
+
+  //this.translateService.instant('COMMON.KEY', this.variable);
+  // .json
+  // COMMON : { KEY : "ceci est un text {{variable}}" }
 }

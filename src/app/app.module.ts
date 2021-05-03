@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
+import { NgModule, APP_INITIALIZER, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,6 +33,8 @@ import { AuthenticationService } from './services/authentication/authentication.
 import { APP_CONFIG, CONFIGS } from './app.config';
 import { AppInterceptor } from './core/app.interceptor';
 import { ExpiredSessionDialogComponent } from './shared/expired-session-dialog/expired-session-dialog.component';
+import { ErrorsService } from './services/errors/errors.service';
+import { AlertsService } from './services/alerts/alerts.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/translations/', '.json');
@@ -89,12 +91,14 @@ registerLocaleData(localeFr, 'fr');
     SessionStorageService,
     LocalStorageService,
     UtilsService,
+    AlertsService,
     AuthenticationService,
     { provide: APP_CONFIG, useValue: CONFIGS },
     { provide: APP_INITIALIZER, useFactory: initializeStorage, deps: [SessionStorageService], multi: true },
     { provide: LOCALE_ID, useValue: 'fr-FR' },
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: ErrorHandler, useClass: ErrorsService}
   ],
   bootstrap: [AppComponent]
 })
